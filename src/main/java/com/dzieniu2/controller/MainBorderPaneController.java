@@ -1,4 +1,4 @@
-package com.dzieniu2;
+package com.dzieniu2.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

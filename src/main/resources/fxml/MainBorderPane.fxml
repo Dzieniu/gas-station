@@ -3,7 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane fx:id="MainBorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.MainBorderPaneController">
+<BorderPane fx:id="MainBorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.MainBorderPaneController">
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
