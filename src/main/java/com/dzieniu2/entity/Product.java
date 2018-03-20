@@ -20,6 +20,7 @@ public class Product {
     private String name;
     private Double price;
     private String category;
+    private String path;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
     private Set<Transaction> transactions = new HashSet(0);
