@@ -1,0 +1,34 @@
+package com.dzieniu2.entity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity(name = "customer")
+@Data
+@EqualsAndHashCode(exclude = "transactions")
+@ToString(exclude = "transactions")
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String surname;
+
+    @Column(name = "register_date")
+    private Date registerDate;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    private Set<Transaction> transactions = new HashSet(0);
+
+    @PrePersist
+    private void setDefaultRegisterDate() {
+        this.registerDate = new Date();
+    }
+}
