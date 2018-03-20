@@ -24,6 +24,9 @@ public class Customer {
     @Column(name = "register_date")
     private Date registerDate;
 
+    @Column(name = "card_code")
+    private String cardCode;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private Set<Transaction> transactions = new HashSet(0);
 
