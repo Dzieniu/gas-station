@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public class ContainerRepository {
 
-    EntityManager em = EntitySingleton.getInstance().getEntityManager();
+    EntityManager em = EntitySingleton.getInstance();
 
     public Container findById(Long id) {
         return em.find(Container.class, id);

@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public class FuelRepository {
 
-    EntityManager em = EntitySingleton.getInstance().getEntityManager();
+    EntityManager em = EntitySingleton.getInstance();
 
     public Fuel findById(Long id) {
         return em.find(Fuel.class, id);

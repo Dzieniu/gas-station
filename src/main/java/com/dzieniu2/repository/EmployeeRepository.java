@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public class EmployeeRepository {
 
-    EntityManager em = EntitySingleton.getInstance().getEntityManager();
+    EntityManager em = EntitySingleton.getInstance();
 
     public Employee findById(Long id) {
         return em.find(Employee.class, id);
