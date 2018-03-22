@@ -49,4 +49,9 @@ public class Transaction {
             inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private Set<Product> products = new HashSet(0);
 
+    @PrePersist
+    private void setTransactionDate() {
+        this.transactionDate = new Date();
+    }
+
 }

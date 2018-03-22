@@ -1,13 +1,13 @@
 package com.dzieniu2.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "container")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(exclude = "fuel")
 @ToString(exclude = "fuel")
 public class Container {
