@@ -18,11 +18,12 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        loadExampleData();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+
+//        loadData();
     }
 
 
@@ -31,7 +32,7 @@ public class Main extends Application
         launch(args);
     }
 
-    public void loadExampleData() {
+    public void loadData() {
         ContainerRepository cr = new ContainerRepository();
         Container co1 = new Container();
         co1.setMaxCapacity(20000l);
@@ -82,16 +83,14 @@ public class Main extends Application
 
         EmployeeRepository er = new EmployeeRepository();
         Employee e1 = new Employee();
-        e1.setEmail("email@gmail.com");
-        e1.setName("Andrzej");
-        e1.setSurname("Klawiatura");
+        e1.setLogin("admin");
         e1.setPassword("123");
+        e1.setRole(Role.ADMIN);
         er.add(e1);
         Employee e2 = new Employee();
-        e2.setEmail("marzenka@gmail.com");
-        e2.setName("Marzena");
-        e2.setSurname("Monitor");
+        e2.setLogin("employee");
         e2.setPassword("123");
+        e2.setRole(Role.EMPLOYEE);
         er.add(e2);
 
         CustomerRepository cur = new CustomerRepository();
