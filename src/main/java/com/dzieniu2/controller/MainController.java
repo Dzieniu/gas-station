@@ -1,14 +1,13 @@
 package com.dzieniu2.controller;
 
 import com.dzieniu2.entity.Employee;
+import com.dzieniu2.entity.Role;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -17,26 +16,22 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    private BorderPane MainBorderPane;
+    private BorderPane mainBorderPane;
 
     @FXML
     private Label statusBar;
 
-    private Employee user;
+    private Employee employee;
 
-    public void setUser(Employee employee){
-        user = employee;
-        setWindow();
-    }
+    @FXML
+    public void initialize(){
 
-    public void setWindow(){
-        statusBar.setText("Logged as: "+user.getLogin()+" ("+user.getRole().toString()+")");
     }
 
     @FXML
-    void logOut(MouseEvent event) throws IOException {
-        Stage actualStage = (Stage) MainBorderPane.getScene().getWindow();
-        actualStage.close();
+    void logOut() throws IOException {
+
+        closeWindow();
 
         Stage newStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
@@ -46,27 +41,32 @@ public class MainController {
     }
 
     @FXML
-    void toGasTanks(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/GasTanks.fxml"));
-        MainBorderPane.setCenter(two);
+    void exit() {
+        closeWindow();
+        System.exit(0);
     }
 
-    @FXML
-    void toOne(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/One.fxml"));
-        MainBorderPane.setCenter(two);
+    public void closeWindow(){
+        Stage stage = (Stage) mainBorderPane.getScene().getWindow();
+        stage.close();
     }
 
-    @FXML
-    void toThree(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/Three.fxml"));
-        MainBorderPane.setCenter(two);
+    public void setEmployee(Employee employee) throws IOException {
+        this.employee = employee;
+        setWindow();
     }
 
-    @FXML
-    void toTwo(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/Two.fxml"));
-        MainBorderPane.setCenter(two);
+    public void setWindow() throws IOException {
+        statusBar.setText("Logged as: "+ employee.getLogin()+" ("+ employee.getRole().toString()+")");
+        switch (employee.getRole()){
+            case ADMIN:
+                BorderPane pane1 = FXMLLoader.load(getClass().getResource("/fxml/AdminPanel.fxml"));
+                mainBorderPane.setCenter(pane1);
+                break;
+            case EMPLOYEE:
+                BorderPane pane2 = FXMLLoader.load(getClass().getResource("/fxml/EmployeePanel.fxml"));
+                mainBorderPane.setCenter(pane2);
+                break;
+        }
     }
-
 }

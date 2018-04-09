@@ -1,5 +1,6 @@
 package com.dzieniu2.entity;
 
+import javafx.beans.property.Property;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,5 +25,4 @@ public class Container {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "container")
     private Fuel fuel;
-
 }

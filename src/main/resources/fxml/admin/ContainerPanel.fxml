@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.admin.ContainerController">
+    <tabs>
+        <Tab text="Update">
+            <content>
+
+            </content>
+            <content>
+                <VBox prefHeight="200.0" prefWidth="100.0" />
+            </content>
+        </Tab>
+        <Tab text="New Container">
+            <content>
+
+            </content>
+            <content>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="login" />
+                        <TextField />
+                        <Label text="password" />
+                        <TextField />
+                        <Label text="role" />
+                        <ChoiceBox prefWidth="150.0" />
+                    </children>
+                </VBox>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

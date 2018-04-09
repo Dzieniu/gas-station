@@ -3,6 +3,8 @@ package com.dzieniu2.repository;
 import com.dzieniu2.entity.Fuel;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 public class FuelRepository {
 
@@ -10,6 +12,11 @@ public class FuelRepository {
 
     public Fuel findById(Long id) {
         return em.find(Fuel.class, id);
+    }
+
+    public List<Fuel> findAll(){
+        Query query = em.createQuery("FROM fuel ");
+        return (List<Fuel>) query.getResultList();
     }
 
     public void add(Fuel fuel) {

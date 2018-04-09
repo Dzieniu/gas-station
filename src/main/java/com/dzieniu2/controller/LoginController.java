@@ -4,11 +4,9 @@ import com.dzieniu2.entity.Employee;
 import com.dzieniu2.repository.EmployeeRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -28,18 +26,12 @@ public class LoginController {
     private Label infoLabel;
 
     @FXML
-    void exit(MouseEvent event) {
-        Stage stage = (Stage) LoginWindow.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    void logIn(MouseEvent event) throws IOException {
+    void logIn() throws IOException {
 
         EmployeeRepository employeeRepository = new EmployeeRepository();
         String login = loginField.getText();
         String password = passwordField.getText();
-        Employee employee = null;
+        Employee employee;
 
         try{
             employee = employeeRepository.findByLogin(login);
@@ -53,14 +45,17 @@ public class LoginController {
             return;
         }
 
-        exit(null);
+        closeWindow();
         showMainWindow(employee);
     }
 
     @FXML
-    public void showMainWindow(Employee employee) throws IOException {
+    void exit() {
+        closeWindow();
+        System.exit(0);
+    }
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainBorderPane.fxml"));
+    public void showMainWindow(Employee employee) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
@@ -68,11 +63,17 @@ public class LoginController {
                 )
         );
         Stage stage = new Stage();
+        stage.setTitle("gas-station");
         stage.setScene(new Scene((Pane) loader.load()));
         stage.setMaximized(true);
         MainController mainController = loader.<MainController>getController();
-        mainController.setUser(employee);
+        mainController.setEmployee(employee);
 
         stage.show();
+    }
+
+    public void closeWindow(){
+        Stage stage = (Stage) LoginWindow.getScene().getWindow();
+        stage.close();
     }
 }

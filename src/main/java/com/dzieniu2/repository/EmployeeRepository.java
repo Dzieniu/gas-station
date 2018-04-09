@@ -4,18 +4,25 @@ import com.dzieniu2.entity.Employee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class EmployeeRepository {
 
     EntityManager em = EntitySingleton.getInstance();
 
     public Employee findById(Long id) {
+        System.out.println(id);
         return em.find(Employee.class, id);
     }
 
     public Employee findByLogin(String login){
         Query query = em.createQuery("FROM employee E WHERE E.login = '"+login+"'");
         return (Employee) query.getSingleResult();
+    }
+
+    public List<Employee> findAll(){
+        Query query = em.createQuery("FROM employee");
+        return (List<Employee>) query.getResultList();
     }
 
     public void add(Employee employee) {
