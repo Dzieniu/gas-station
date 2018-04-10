@@ -1,6 +1,5 @@
 package com.dzieniu2.entity;
 
-import javafx.beans.property.Property;
 import lombok.*;
 
 import javax.persistence.*;

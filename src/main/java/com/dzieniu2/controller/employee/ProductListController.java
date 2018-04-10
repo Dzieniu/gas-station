@@ -1,4 +1,4 @@
-package com.dzieniu2.controller;
+package com.dzieniu2.controller.employee;
 
 import com.dzieniu2.entity.Product;
 import com.dzieniu2.repository.ProductRepository;

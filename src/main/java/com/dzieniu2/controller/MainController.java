@@ -1,7 +1,6 @@
 package com.dzieniu2.controller;
 
 import com.dzieniu2.entity.Employee;
-import com.dzieniu2.entity.Role;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,11 +59,11 @@ public class MainController {
         statusBar.setText("Logged as: "+ employee.getLogin()+" ("+ employee.getRole().toString()+")");
         switch (employee.getRole()){
             case ADMIN:
-                BorderPane pane1 = FXMLLoader.load(getClass().getResource("/fxml/AdminPanel.fxml"));
+                BorderPane pane1 = FXMLLoader.load(getClass().getResource("/fxml/admin/AdminPanel.fxml"));
                 mainBorderPane.setCenter(pane1);
                 break;
             case EMPLOYEE:
-                BorderPane pane2 = FXMLLoader.load(getClass().getResource("/fxml/EmployeePanel.fxml"));
+                BorderPane pane2 = FXMLLoader.load(getClass().getResource("/fxml/employee/EmployeePanel.fxml"));
                 mainBorderPane.setCenter(pane2);
                 break;
         }

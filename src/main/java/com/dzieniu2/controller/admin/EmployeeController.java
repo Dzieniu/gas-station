@@ -5,31 +5,29 @@ import com.dzieniu2.entity.Role;
 import com.dzieniu2.repository.EmployeeRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class EmployeeController{
 
     @FXML
-    TextField loginFieldCreate,passwordFieldCreate,loginFieldUpdate,passwordFieldUpdate;
+    private TabPane employeePane;
 
     @FXML
-    private ChoiceBox roleBoxCreate,roleBoxUpdate,idBox;
+    private TextField loginFieldCreate,passwordFieldCreate,loginFieldUpdate,passwordFieldUpdate;
+
+    @FXML
+    private ChoiceBox roleBoxCreate,roleBoxUpdate;
+
+    @FXML
+    private Label idBox;
 
     private AdminController adminController;
-
-    @FXML
-    public void initialize(){
-        EmployeeRepository employeeRepository = new EmployeeRepository();
-        employeeRepository.findAll().forEach(x -> idBox.getItems().add(x.getId()));
-        idBox.getSelectionModel().selectFirst();
-
-        readEmployee();
-
-        roleBoxCreate.getItems().addAll(Role.values());
-        roleBoxUpdate.getItems().addAll(Role.values());
-    }
+    private Employee selectedEmployee;
 
     @FXML
     public void createEmployee() throws IOException {
@@ -40,38 +38,48 @@ public class EmployeeController{
         employee.setRole((Role) roleBoxCreate.getSelectionModel().getSelectedItem());
         employeeRepository.add(employee);
         adminController.switchTab();
-    }
-
-    @FXML void readEmployee(){
-        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
-        if(id==null) return;
-
-        EmployeeRepository employeeRepository = new EmployeeRepository();
-        Employee employee = employeeRepository.findById(id);
-        loginFieldUpdate.setText(employee.getLogin());
-        passwordFieldUpdate.setText(employee.getPassword());
-        roleBoxUpdate.getSelectionModel().select(employee.getRole());
+        closeWindow();
     }
 
     @FXML void updateEmployee() throws IOException {
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
+        Long id = selectedEmployee.getId();
         Employee employee = employeeRepository.findById(id);
         employee.setLogin(loginFieldUpdate.getText());
         employee.setPassword(passwordFieldUpdate.getText());
         employee.setRole((Role) roleBoxUpdate.getSelectionModel().getSelectedItem());
         employeeRepository.update(employee);
         adminController.switchTab();
+        closeWindow();
     }
 
     @FXML void deleteEmployee() throws IOException {
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
+        Long id = selectedEmployee.getId();
         employeeRepository.delete(id);
         adminController.switchTab();
+        closeWindow();
     }
 
     public void setAdminController(AdminController adminController) {
         this.adminController = adminController;
+    }
+
+    public void setSelectedEmployee(Employee selectedEmployee) {
+        this.selectedEmployee = selectedEmployee;
+
+        roleBoxCreate.getItems().addAll(Role.values());
+        roleBoxUpdate.getItems().addAll(Role.values());
+
+        idBox.setText(selectedEmployee.getId().toString());
+        loginFieldUpdate.setText(selectedEmployee.getLogin());
+        passwordFieldUpdate.setText(selectedEmployee.getPassword());
+        roleBoxUpdate.getSelectionModel().select(selectedEmployee.getRole());
+    }
+
+    @FXML
+    private void closeWindow(){
+        Stage stage = (Stage) employeePane.getScene().getWindow();
+        stage.close();
     }
 }

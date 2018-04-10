@@ -1,38 +1,31 @@
 package com.dzieniu2.controller.admin;
 
 import com.dzieniu2.entity.Customer;
-import com.dzieniu2.entity.Employee;
-import com.dzieniu2.entity.Role;
 import com.dzieniu2.repository.CustomerRepository;
-import com.dzieniu2.repository.EmployeeRepository;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
+import javafx.stage.Stage;
 
 public class CustomerController {
 
     @FXML
-    TextField nameFieldCreate,surnameFieldCreate,cardCodeFieldCreate,
+    private TabPane customerPane;
+
+    @FXML
+    private TextField nameFieldCreate,surnameFieldCreate,cardCodeFieldCreate,
             nameFieldUpdate,surnameFieldUpdate,cardCodeFieldUpdate;
 
     @FXML
-    private ChoiceBox idBox;
+    private Label idBox;
 
     private AdminController adminController;
 
-    @FXML
-    public void initialize(){
-        CustomerRepository customerRepository = new CustomerRepository();
-        customerRepository.findAll().forEach(x -> idBox.getItems().add(x.getId()));
-        idBox.getSelectionModel().selectFirst();
-
-        readCustomer();
-    }
+    private Customer selectedCustomer;
 
     @FXML
-    public void createCustomer() throws IOException {
+    public void createCustomer(){
         CustomerRepository customerRepository = new CustomerRepository();
         Customer customer = new Customer();
         customer.setName(nameFieldCreate.getText());
@@ -40,39 +33,42 @@ public class CustomerController {
         customer.setCardCode(cardCodeFieldCreate.getText());
         customerRepository.add(customer);
         adminController.switchTab();
+        closeWindow();
     }
 
-    @FXML
-    void readCustomer(){
-        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
-        if(id==null) return;
-
+    @FXML void updateCustomer(){
         CustomerRepository customerRepository = new CustomerRepository();
-        Customer customer = customerRepository.findById(id);
-        nameFieldUpdate.setText(customer.getName());
-        surnameFieldUpdate.setText(customer.getSurname());
-        cardCodeFieldUpdate.setText(customer.getCardCode());
+        selectedCustomer.setName(nameFieldUpdate.getText());
+        selectedCustomer.setSurname(surnameFieldUpdate.getText());
+        selectedCustomer.setCardCode(cardCodeFieldUpdate.getText());
+        customerRepository.update(selectedCustomer);
+        adminController.switchTab();
+        closeWindow();
     }
 
-//    @FXML void updateCustomer() throws IOException {
-//        EmployeeRepository employeeRepository = new EmployeeRepository();
-//        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
-//        Employee employee = employeeRepository.findById(id);
-//        employee.setLogin(loginFieldUpdate.getText());
-//        employee.setPassword(passwordFieldUpdate.getText());
-//        employee.setRole((Role) roleBoxUpdate.getSelectionModel().getSelectedItem());
-//        employeeRepository.update(employee);
-//        adminController.switchTab();
-//    }
-//
-//    @FXML void deleteCustomer() throws IOException {
-//        EmployeeRepository employeeRepository = new EmployeeRepository();
-//        Long id = (Long) idBox.getSelectionModel().getSelectedItem();
-//        employeeRepository.delete(id);
-//        adminController.switchTab();
-//    }
+    @FXML void deleteCustomer(){
+        CustomerRepository customerRepository = new CustomerRepository();
+        customerRepository.delete(selectedCustomer.getId());
+        adminController.switchTab();
+        closeWindow();
+    }
 
     public void setAdminController(AdminController adminController) {
         this.adminController = adminController;
+    }
+
+    public void setSelectedCustomer(Customer selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
+
+        idBox.setText(selectedCustomer.getId().toString());
+        nameFieldUpdate.setText(selectedCustomer.getName());
+        surnameFieldUpdate.setText(selectedCustomer.getSurname());
+        cardCodeFieldUpdate.setText(selectedCustomer.getCardCode());
+    }
+
+    @FXML
+    private void closeWindow(){
+        Stage stage = (Stage) customerPane.getScene().getWindow();
+        stage.close();
     }
 }

@@ -10,31 +10,28 @@
 
 <BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.admin.AdminController">
    <center>
-      <TabPane fx:id="tableTabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tableTabPane" style="-fx-tab-min-height: 60;-fx-tab-min-width: 300" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab onSelectionChanged="#switchTab" text="Employees">
-            <content>
-
-            </content>
                <content>
-                  <TableView fx:id="employeesTable" prefHeight="200.0" prefWidth="1000.0">
+                  <TableView fx:id="employeesTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="1000.0">
                     <columns>
-                       <TableColumn prefWidth="75.0" text="id">
+                       <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                            <cellValueFactory>
                                <PropertyValueFactory property="id" />
                            </cellValueFactory>
                        </TableColumn>
-                        <TableColumn prefWidth="75.0" text="login">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="login">
                             <cellValueFactory>
                                 <PropertyValueFactory property="login" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="password">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="password">
                             <cellValueFactory>
                                 <PropertyValueFactory property="password" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="role">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="role">
                             <cellValueFactory>
                                 <PropertyValueFactory property="role" />
                             </cellValueFactory>
@@ -50,29 +47,29 @@
             <content>
             </content>
                <content>
-                  <TableView fx:id="customersTable" prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="customersTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="id">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                             <cellValueFactory>
                                 <PropertyValueFactory property="id" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="name">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="name">
                             <cellValueFactory>
                                 <PropertyValueFactory property="name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="surname">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="surname">
                             <cellValueFactory>
                                 <PropertyValueFactory property="surname" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="card code">
+                        <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="card code">
                             <cellValueFactory>
                                 <PropertyValueFactory property="cardCode" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="register date">
+                        <TableColumn style="-fx-alignment: CENTER" text="register date">
                             <cellValueFactory>
                                 <PropertyValueFactory property="registerDate" />
                             </cellValueFactory>
@@ -88,34 +85,34 @@
                 <content>
                 </content>
                 <content>
-                    <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="productsTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="200.0">
                         <columns>
-                            <TableColumn prefWidth="75.0" text="id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="category">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="category">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="category" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="name">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="name">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="name" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="remaining">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="remaining">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="remaining" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="path">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="path">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="path" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="price">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="price">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="price" />
                                 </cellValueFactory>
@@ -131,21 +128,26 @@
                 <content>
                 </content>
                 <content>
-                    <TableView fx:id="containersTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="containersTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="200.0">
                         <columns>
-                            <TableColumn prefWidth="75.0" text="id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="fuelLeft">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="fuelLeft">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="fuelLeft" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="maxCapacity">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="maxCapacity">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="maxCapacity" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="fuel">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="fuel" />
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
@@ -159,26 +161,21 @@
                 <content>
                 </content>
                 <content>
-                    <TableView fx:id="fuelsTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="fuelsTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="200.0">
                         <columns>
-                            <TableColumn prefWidth="75.0" text="id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="name">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="name">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="name" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="price">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="price">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="price" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" text="container id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="container"/>
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
@@ -192,44 +189,44 @@
                 <content>
                 </content>
                 <content>
-                    <TableView fx:id="transactionsTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="transactionsTable" style="-fx-font-size: 20" prefHeight="200.0" prefWidth="200.0">
                         <columns>
-                            <TableColumn prefWidth="75.0" text="id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="fuel price">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="fuel price">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="fuelPrice" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="fuel quantity">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="fuel quantity">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="fuelQuantity" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="total price">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="total price">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="totalPrice" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="transaction date">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="transaction date">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="transactionDate" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="customer id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="customer id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="customer" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="employee id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="employee id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="employee" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="fuel id">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="fuel id">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="fuel" />
                                 </cellValueFactory>

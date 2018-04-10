@@ -1,4 +1,4 @@
-package com.dzieniu2.controller;
+package com.dzieniu2.controller.employee;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,25 +15,25 @@ public class EmployeeController {
 
     @FXML
     void toGasTanks(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/GasTanks.fxml"));
+        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/GasTanks.fxml"));
         mainBorderPane.setCenter(two);
     }
 
     @FXML
     void toOne(MouseEvent event) throws IOException {
-        BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/One.fxml"));
+        BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/One.fxml"));
         mainBorderPane.setCenter(two);
     }
 
     @FXML
     void toThree(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/Three.fxml"));
+        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/Three.fxml"));
         mainBorderPane.setCenter(two);
     }
 
     @FXML
     void toTwo(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/Two.fxml"));
+        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/Two.fxml"));
         mainBorderPane.setCenter(two);
     }
 }

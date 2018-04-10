@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefWidth="1420.0" style="-fx-background-color: #777777;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.ProductListController">
+<BorderPane prefWidth="1420.0" style="-fx-background-color: #777777;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.ProductListController">
    <top>
        <GridPane fx:id="productGrid" prefHeight="950">
            <columnConstraints>
