@@ -1,8 +1,11 @@
 package com.dzieniu2.repository;
 
+import com.dzieniu2.entity.Employee;
 import com.dzieniu2.entity.Transaction;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 public class TransactionRepository {
 
@@ -10,6 +13,11 @@ public class TransactionRepository {
 
     public Transaction findById(Long id) {
         return em.find(Transaction.class, id);
+    }
+
+    public List<Transaction> findAll(){
+        Query query = em.createQuery("FROM transaction ");
+        return (List<Transaction>) query.getResultList();
     }
 
     public void add(Transaction transaction) {

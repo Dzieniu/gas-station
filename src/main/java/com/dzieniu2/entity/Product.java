@@ -19,10 +19,34 @@ public class Product {
     private Long id;
     private String name;
     private Double price;
-    private String category;
+    private Integer remaining;
+    private ProductCategory category;
     private String path;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
     private Set<Transaction> transactions = new HashSet(0);
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public Integer getRemaining() {
+        return remaining;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public String getPath() {
+        return path;
+    }
 }

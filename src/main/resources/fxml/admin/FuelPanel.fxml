@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane fx:id="fuelPane" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.admin.FuelController">
+    <tabs>
+        <Tab text="Update">
+            <content>
+                <AnchorPane prefHeight="299.0" prefWidth="600.0">
+                    <children>
+                        <Button onAction="#deleteFuel" layoutX="412.0" layoutY="35.0" mnemonicParsing="false" text="Delete fuel" />
+                        <Button onAction="#updateFuel" layoutX="388.0" layoutY="170.0" mnemonicParsing="false" text="Update fuel" />
+                        <TextField fx:id="nameFieldUpdate" layoutX="155.0" layoutY="105.0" />
+                        <TextField fx:id="priceFieldUpdate" layoutX="163.0" layoutY="170.0" />
+                        <Label layoutX="60.0" layoutY="175.0" text="Price" />
+                        <Label layoutX="60.0" layoutY="121.0" text="Name" />
+                        <Label layoutX="60.0" layoutY="51.0" text="Fuel:" />
+                        <Label fx:id="idBox" layoutX="155.0" layoutY="51.0" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="New Fuel">
+         <content>
+            <AnchorPane prefHeight="299.0" prefWidth="600.0">
+               <children>
+                  <Button onAction="#createFuel" layoutX="226.0" layoutY="217.0" mnemonicParsing="false" text="Create fuel" />
+                  <TextField fx:id="nameFieldCreate" layoutX="155.0" layoutY="105.0" />
+                  <TextField fx:id="priceFieldCreate" layoutX="163.0" layoutY="170.0" />
+                  <Label layoutX="60.0" layoutY="175.0" text="Price" />
+                  <Label layoutX="60.0" layoutY="121.0" text="Name" />
+               </children>
+            </AnchorPane>
+         </content>
+        </Tab>
+    </tabs>
+</TabPane>

@@ -3,6 +3,8 @@ package com.dzieniu2.repository;
 import com.dzieniu2.entity.Container;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 public class ContainerRepository {
 
@@ -10,6 +12,11 @@ public class ContainerRepository {
 
     public Container findById(Long id) {
         return em.find(Container.class, id);
+    }
+
+    public List<Container> findAll(){
+        Query query = em.createQuery("FROM container ");
+        return (List<Container>) query.getResultList();
     }
 
     public void add(Container container) {

@@ -15,7 +15,7 @@ public class ProductRepository {
     }
 
     public List<Product> findAll() {
-        Query query = em.createQuery("SELECT p FROM product p");
+        Query query = em.createQuery("FROM product");
         return query.getResultList();
     }
 

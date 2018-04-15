@@ -3,6 +3,8 @@ package com.dzieniu2.repository;
 import com.dzieniu2.entity.Customer;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 public class CustomerRepository {
 
@@ -10,6 +12,11 @@ public class CustomerRepository {
 
     public Customer findById(Long id) {
         return em.find(Customer.class, id);
+    }
+
+    public List<Customer> findAll(){
+        Query query = em.createQuery("FROM customer ");
+        return (List<Customer>) query.getResultList();
     }
 
     public void add(Customer customer) {

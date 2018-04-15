@@ -24,5 +24,4 @@ public class Container {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "container")
     private Fuel fuel;
-
 }

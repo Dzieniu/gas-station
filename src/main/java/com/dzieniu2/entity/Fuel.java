@@ -19,6 +19,7 @@ public class Fuel {
     private Long id;
 
     private String name;
+
     private Double price;
 
     @OneToOne(fetch = FetchType.LAZY)

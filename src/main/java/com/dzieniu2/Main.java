@@ -18,11 +18,12 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        //loadExampleData();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
+
+        //loadData();
     }
 
 
@@ -31,7 +32,7 @@ public class Main extends Application
         launch(args);
     }
 
-    public void loadExampleData() {
+    public void loadData() {
         ContainerRepository cr = new ContainerRepository();
         Container co1 = new Container();
         co1.setMaxCapacity(20000l);
@@ -82,16 +83,14 @@ public class Main extends Application
 
         EmployeeRepository er = new EmployeeRepository();
         Employee e1 = new Employee();
-        e1.setEmail("email@gmail.com");
-        e1.setName("Andrzej");
-        e1.setSurname("Klawiatura");
+        e1.setLogin("admin");
         e1.setPassword("123");
+        e1.setRole(Role.ADMIN);
         er.add(e1);
         Employee e2 = new Employee();
-        e2.setEmail("marzenka@gmail.com");
-        e2.setName("Marzena");
-        e2.setSurname("Monitor");
+        e2.setLogin("employee");
         e2.setPassword("123");
+        e2.setRole(Role.EMPLOYEE);
         er.add(e2);
 
         CustomerRepository cur = new CustomerRepository();
@@ -113,63 +112,73 @@ public class Main extends Application
 
         ProductRepository pr = new ProductRepository();
         Product p1 = new Product();
-        p1.setCategory("alkohol");
+        p1.setCategory(ProductCategory.ALCOHOL);
         p1.setName("Harnaś");
         p1.setPrice(1.50);
+        p1.setRemaining(102);
         p1.setPath("hranas.png");
         pr.add(p1);
         Product p2 = new Product();
-        p2.setCategory("alkohol");
+        p2.setCategory(ProductCategory.ALCOHOL);
         p2.setName("Żubr");
         p2.setPrice(1.70);
+        p2.setRemaining(13);
         p2.setPath("zubr.png");
         pr.add(p2);
         Product p3 = new Product();
-        p3.setCategory("alkohol");
+        p3.setCategory(ProductCategory.ALCOHOL);
         p3.setName("Żubrówka");
         p3.setPrice(18.90);
+        p3.setRemaining(24);
         p3.setPath("zubrowka.png");
         pr.add(p3);
         Product p4 = new Product();
-        p4.setCategory("spożywcze");
+        p4.setCategory(ProductCategory.FOOD);
         p4.setName("Snickers");
         p4.setPrice(2.20);
+        p4.setRemaining(334);
         p4.setPath("snickers.png");
         pr.add(p4);
         Product p5 = new Product();
-        p5.setCategory("spożywcze");
+        p5.setCategory(ProductCategory.FOOD);
         p5.setName("Milka");
         p5.setPrice(4.00);
+        p5.setRemaining(30);
         p5.setPath("milka.png");
         pr.add(p5);
         Product p6 = new Product();
-        p6.setCategory("spożywcze");
+        p6.setCategory(ProductCategory.FOOD);
         p6.setName("Śmiej Żelki");
         p6.setPrice(3.70);
+        p6.setRemaining(89);
         p6.setPath("zelki.png");
         pr.add(p6);
         Product p7 = new Product();
-        p7.setCategory("akcesoria samochodowe");
+        p7.setCategory(ProductCategory.ACCESSORIES);
         p7.setName("Płyn do spyskiwaczy");
         p7.setPrice(15.90);
+        p7.setRemaining(45);
         p7.setPath("plyn.png");
         pr.add(p7);
         Product p8 = new Product();
-        p8.setCategory("akcesoria samochodowe");
+        p8.setCategory(ProductCategory.ACCESSORIES);
         p8.setName("Plak");
         p8.setPrice(4.50);
+        p8.setRemaining(75);
         p8.setPath("plak.png");
         pr.add(p8);
         Product p9 = new Product();
-        p9.setCategory("na ciepło");
+        p9.setCategory(ProductCategory.SNACK);
         p9.setName("Hot-Dog");
         p9.setPrice(6.90);
+        p9.setRemaining(47);
         p9.setPath("hot-dog.png");
         pr.add(p9);
         Product p10 = new Product();
-        p10.setCategory("na ciepło");
+        p10.setCategory(ProductCategory.SNACK);
         p10.setName("Zapiekanka");
         p10.setPrice(4.50);
+        p10.setRemaining(56);
         p10.setPath("zapiekanka.png");
         pr.add(p10);
 
