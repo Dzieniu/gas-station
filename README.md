@@ -15,3 +15,15 @@ Zniżki będą obowiązywały tylko na zakup paliwa, nie będą obowiązywały n
 Ważną częścią systemu jest obsługa stacji benzynowej, to ona przeprowadza transakcje, kasując produkty, przygotowując gorące przekąski oraz rozliczając poszczególnych klientów z zatankowanego paliwa oraz zakupów w sklepie. Obsługa akceptuje zapłaty zarówno w formie gotówki i jak i z użyciem karty kredytowej. Obsługa wydaje również karty stałego klienta. Klient po podaniu swoich danych zostaje zarejestrowany w systemie oraz dostaje kartę która uprawania go do otrzymywania zniżek klienckich. 
 
 Sprzedawca ma dostęp do widoku z kamer zamontowanych na stacji oraz do podglądu stanu wszystkich zbiorników z paliwami. Stacja pracuje 24 godziny na dobę 7 dni w tygodniu, także w święta.
+
+## Diagram przypadków użycia
+![Diagram przypadków użycia](https://drive.google.com/uc?id=1ZDv9qqYQX2fj_MTJrrqHKnXw6urB6fdP)
+
+## Diagram sekwencji
+![Diagram sekwencji]()
+
+## Diagram aktywności
+![Diagram aktywności](https://drive.google.com/uc?id=1jO8-fsfvouMcUWouTUPlzU4C_NJMZ5He)
+
+## Diagram związków encji
+![Diagram związków encji](https://drive.google.com/uc?id=1m850XDNU7siljMD-GGB10ic1VQY5y-oe)
