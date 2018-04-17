@@ -20,7 +20,7 @@ Sprzedawca ma dostęp do widoku z kamer zamontowanych na stacji oraz do podgląd
 ![Diagram przypadków użycia](https://drive.google.com/uc?id=1ZDv9qqYQX2fj_MTJrrqHKnXw6urB6fdP)
 
 ## Diagram sekwencji
-![Diagram sekwencji]()
+![Diagram sekwencji](https://drive.google.com/uc?id=1-_qzN5ntC8HEeZgwd0LOwBeJYqvh-6Lq)
 
 ## Diagram aktywności
 ![Diagram aktywności](https://drive.google.com/uc?id=1jO8-fsfvouMcUWouTUPlzU4C_NJMZ5He)
