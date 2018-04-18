@@ -2,6 +2,8 @@ package com.dzieniu2.controller;
 
 import com.dzieniu2.entity.Employee;
 import com.dzieniu2.repository.EmployeeRepository;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import javax.persistence.NoResultException;
 import java.io.IOException;
@@ -57,6 +60,9 @@ public class LoginController {
 
     public void showMainWindow(Employee employee) throws IOException {
 
+        JFXButton jfxButton = new JFXButton();
+        jfxButton.setButtonType(JFXButton.ButtonType.RAISED);
+
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "/fxml/MainBorderPane.fxml"
@@ -69,6 +75,12 @@ public class LoginController {
         MainController mainController = loader.<MainController>getController();
         mainController.setEmployee(employee);
 
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(0);
+            }
+        });
         stage.show();
     }
 

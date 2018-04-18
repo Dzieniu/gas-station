@@ -21,7 +21,7 @@ public class EmployeeController {
 
     @FXML
     void toOne(MouseEvent event) throws IOException {
-        BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/One.fxml"));
+        BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/ProductList.fxml"));
         mainBorderPane.setCenter(two);
     }
 

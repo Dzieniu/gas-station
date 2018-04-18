@@ -24,7 +24,6 @@ public class MainController {
 
     @FXML
     public void initialize(){
-
     }
 
     @FXML
