@@ -1,7 +1,6 @@
 package com.dzieniu2.repository;
 
-import com.dzieniu2.entity.Employee;
-import com.dzieniu2.entity.Transaction;
+import com.dzieniu2.entity.TransactionFuel;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -11,32 +10,32 @@ public class TransactionRepository {
 
     EntityManager em = EntitySingleton.getInstance();
 
-    public Transaction findById(Long id) {
-        return em.find(Transaction.class, id);
+    public TransactionFuel findById(Long id) {
+        return em.find(TransactionFuel.class, id);
     }
 
-    public List<Transaction> findAll(){
+    public List<TransactionFuel> findAll(){
         Query query = em.createQuery("FROM transaction ");
-        return (List<Transaction>) query.getResultList();
+        return (List<TransactionFuel>) query.getResultList();
     }
 
-    public void add(Transaction transaction) {
+    public void add(TransactionFuel transactionFuel) {
         em.getTransaction().begin();
-        em.persist(transaction);
+        em.persist(transactionFuel);
         em.getTransaction().commit();
     }
 
-    public Transaction update(Transaction transaction) {
+    public TransactionFuel update(TransactionFuel transactionFuel) {
         em.getTransaction().begin();
-        em.merge(transaction);
+        em.merge(transactionFuel);
         em.getTransaction().commit();
-        return transaction;
+        return transactionFuel;
     }
 
     public void delete(Long id) {
-        Transaction transaction = findById(id);
+        TransactionFuel transactionFuel = findById(id);
         em.getTransaction().begin();
-        em.remove(transaction);
+        em.remove(transactionFuel);
         em.getTransaction().commit();
     }
 

@@ -28,7 +28,10 @@ public class Customer {
     private String cardCode;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private Set<Transaction> transactions = new HashSet(0);
+    private Set<TransactionFuel> transactionFuels = new HashSet(0);
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    private Set<TransactionProduct> transactionProduct = new HashSet(0);
 
     @PrePersist
     private void setDefaultRegisterDate() {

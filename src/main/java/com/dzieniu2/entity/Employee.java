@@ -22,5 +22,8 @@ public class Employee {
     private Role role;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
-    private Set<Transaction> transactions = new HashSet(0);
+    private Set<TransactionFuel> transactionFuels = new HashSet(0);
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<TransactionProduct> transactionProduct = new HashSet(0);
 }

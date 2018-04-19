@@ -1,6 +1,6 @@
 package com.dzieniu2.controller.admin;
 
-import com.dzieniu2.entity.Transaction;
+import com.dzieniu2.entity.TransactionFuel;
 import com.dzieniu2.repository.CustomerRepository;
 import com.dzieniu2.repository.EmployeeRepository;
 import com.dzieniu2.repository.FuelRepository;
@@ -30,7 +30,7 @@ public class TransactionController {
 
     private AdminController adminController;
 
-    private Transaction selectedTransaction;
+    private TransactionFuel selectedTransactionFuel;
 
     @FXML
     public void createTransaction(){
@@ -38,14 +38,14 @@ public class TransactionController {
         EmployeeRepository employeeRepository = new EmployeeRepository();
         CustomerRepository customerRepository = new CustomerRepository();
         FuelRepository fuelRepository = new FuelRepository();
-        Transaction transaction = new Transaction();
-        transaction.setTotalPrice(Double.parseDouble(totalPriceFieldCreate.getText()));
-        transaction.setFuelQuantity(Double.parseDouble(fuelQuantityFieldCreate.getText()));
-        transaction.setFuelPrice(Double.parseDouble(fuelPriceFieldCreate.getText()));
-        transaction.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
-        transaction.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
-        transaction.setFuel(fuelRepository.findByName(fuelIdFieldCreate.getSelectionModel().getSelectedItem().toString()));
-        transactionRepository.add(transaction);
+        TransactionFuel transactionFuel = new TransactionFuel();
+        transactionFuel.setTotalPrice(Double.parseDouble(totalPriceFieldCreate.getText()));
+        transactionFuel.setFuelQuantity(Double.parseDouble(fuelQuantityFieldCreate.getText()));
+        transactionFuel.setFuelPrice(Double.parseDouble(fuelPriceFieldCreate.getText()));
+        transactionFuel.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
+        transactionFuel.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
+        transactionFuel.setFuel(fuelRepository.findByName(fuelIdFieldCreate.getSelectionModel().getSelectedItem().toString()));
+        transactionRepository.add(transactionFuel);
         adminController.switchTab();
         closeWindow();
     }
@@ -55,20 +55,20 @@ public class TransactionController {
         EmployeeRepository employeeRepository = new EmployeeRepository();
         CustomerRepository customerRepository = new CustomerRepository();
         FuelRepository fuelRepository = new FuelRepository();
-        selectedTransaction.setTotalPrice(Double.parseDouble(totalPriceFieldUpdate.getText()));
-        selectedTransaction.setFuelQuantity(Double.parseDouble(fuelQuantityFieldUpdate.getText()));
-        selectedTransaction.setFuelPrice(Double.parseDouble(fuelPriceFieldUpdate.getText()));
-        selectedTransaction.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
-        selectedTransaction.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
-        selectedTransaction.setFuel(fuelRepository.findByName(fuelIdFieldUpdate.getSelectionModel().getSelectedItem().toString()));
-        transactionRepository.update(selectedTransaction);
+        selectedTransactionFuel.setTotalPrice(Double.parseDouble(totalPriceFieldUpdate.getText()));
+        selectedTransactionFuel.setFuelQuantity(Double.parseDouble(fuelQuantityFieldUpdate.getText()));
+        selectedTransactionFuel.setFuelPrice(Double.parseDouble(fuelPriceFieldUpdate.getText()));
+        selectedTransactionFuel.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
+        selectedTransactionFuel.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
+        selectedTransactionFuel.setFuel(fuelRepository.findByName(fuelIdFieldUpdate.getSelectionModel().getSelectedItem().toString()));
+        transactionRepository.update(selectedTransactionFuel);
         adminController.switchTab();
         closeWindow();
     }
 
     @FXML void deleteTransaction(){
         TransactionRepository transactionRepository = new TransactionRepository();
-        transactionRepository.delete(selectedTransaction.getId());
+        transactionRepository.delete(selectedTransactionFuel.getId());
         adminController.switchTab();
         closeWindow();
     }
@@ -77,8 +77,8 @@ public class TransactionController {
         this.adminController = adminController;
     }
 
-    public void setSelectedTransaction(Transaction selectedTransaction) {
-        this.selectedTransaction = selectedTransaction;
+    public void setSelectedTransactionFuel(TransactionFuel selectedTransactionFuel) {
+        this.selectedTransactionFuel = selectedTransactionFuel;
 
         EmployeeRepository employeeRepository = new EmployeeRepository();
         CustomerRepository customerRepository = new CustomerRepository();
@@ -90,13 +90,13 @@ public class TransactionController {
         customerRepository.findAll().forEach(x -> customerIdFieldUpdate.getItems().add(x.getId()));
         fuelRepository.findAll().forEach(x -> fuelIdFieldUpdate.getItems().add(x.getName()));
 
-        idBox.setText(selectedTransaction.getId().toString());
-        totalPriceFieldUpdate.setText(selectedTransaction.getTotalPrice().toString());
-        fuelQuantityFieldUpdate.setText(selectedTransaction.getFuelQuantity().toString());
-        fuelPriceFieldUpdate.setText(selectedTransaction.getFuelPrice().toString());
-        employeeIdFieldUpdate.getSelectionModel().select(selectedTransaction.getEmployee().getId());
-        customerIdFieldUpdate.getSelectionModel().select(selectedTransaction.getCustomer().getId());
-        fuelIdFieldUpdate.getSelectionModel().select(selectedTransaction.getFuel().getName());
+        idBox.setText(selectedTransactionFuel.getId().toString());
+        totalPriceFieldUpdate.setText(selectedTransactionFuel.getTotalPrice().toString());
+        fuelQuantityFieldUpdate.setText(selectedTransactionFuel.getFuelQuantity().toString());
+        fuelPriceFieldUpdate.setText(selectedTransactionFuel.getFuelPrice().toString());
+        employeeIdFieldUpdate.getSelectionModel().select(selectedTransactionFuel.getEmployee().getId());
+        customerIdFieldUpdate.getSelectionModel().select(selectedTransactionFuel.getCustomer().getId());
+        fuelIdFieldUpdate.getSelectionModel().select(selectedTransactionFuel.getFuel().getName());
     }
 
     @FXML

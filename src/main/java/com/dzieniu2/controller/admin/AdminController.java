@@ -104,18 +104,18 @@ public class AdminController {
         stage.show();
     }
 
-    @FXML void showTransactionWindow(Transaction transaction) throws IOException{
+    @FXML void showTransactionWindow(TransactionFuel transactionFuel) throws IOException{
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "/fxml/admin/TransactionPanel.fxml"
                 )
         );
         Stage stage = new Stage();
-        stage.setTitle("Transaction");
+        stage.setTitle("TransactionFuel");
         stage.setScene(new Scene(loader.load()));
         TransactionController transactionController = loader.<TransactionController>getController();
         transactionController.setAdminController(this);
-        transactionController.setSelectedTransaction(transaction);
+        transactionController.setSelectedTransactionFuel(transactionFuel);
         stage.show();
     }
 
@@ -154,8 +154,8 @@ public class AdminController {
                 break;
             case 5:
                 TransactionRepository transactionRepository = new TransactionRepository();
-                List<Transaction> transactions = transactionRepository.findAll();
-                transactionsTable.getItems().addAll(transactions);
+                List<TransactionFuel> transactionFuels = transactionRepository.findAll();
+                transactionsTable.getItems().addAll(transactionFuels);
                 break;
         }
     }
@@ -236,9 +236,9 @@ public class AdminController {
 
         transactionsTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                Transaction transaction = (Transaction) transactionsTable.getSelectionModel().getSelectedItem();
+                TransactionFuel transactionFuel = (TransactionFuel) transactionsTable.getSelectionModel().getSelectedItem();
                 try {
-                    showTransactionWindow(transaction);
+                    showTransactionWindow(transactionFuel);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -251,19 +251,19 @@ public class AdminController {
             simpleStringProperty.setValue(param.getValue().getFuel().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<Transaction,String> column2 = (TableColumn<Transaction, String>) transactionsTable.getColumns().get(5);
+        TableColumn<TransactionFuel,String> column2 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(5);
         column2.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<Transaction,String> column3 = (TableColumn<Transaction, String>) transactionsTable.getColumns().get(6);
+        TableColumn<TransactionFuel,String> column3 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(6);
         column3.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getEmployee().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<Transaction,String> column4 = (TableColumn<Transaction, String>) transactionsTable.getColumns().get(7);
+        TableColumn<TransactionFuel,String> column4 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(7);
         column4.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getFuel().getId().toString());

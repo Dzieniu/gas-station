@@ -38,7 +38,7 @@ public class ProductController {
         product.setName(nameFieldCreate.getText());
         product.setPrice(Double.parseDouble(priceFieldCreate.getText()));
         product.setRemaining(Integer.parseInt(remainingFieldCreate.getText()));
-        product.setPath(pathFieldCreate.getText());
+        //product.setPath(pathFieldCreate.getText());
         product.setCategory((ProductCategory) categoryBoxCreate.getSelectionModel().getSelectedItem());
         productRepository.add(product);
         adminController.switchTab();
@@ -50,7 +50,7 @@ public class ProductController {
         selectedProduct.setName(nameFieldUpdate.getText());
         selectedProduct.setPrice(Double.parseDouble(priceFieldUpdate.getText()));
         selectedProduct.setRemaining(Integer.parseInt(remainingFieldUpdate.getText()));
-        selectedProduct.setPath(pathFieldUpdate.getText());
+        //selectedProduct.setPath(pathFieldUpdate.getText());
         selectedProduct.setCategory((ProductCategory) categoryBoxUpdate.getSelectionModel().getSelectedItem());
         productRepository.update(selectedProduct);
         adminController.switchTab();
@@ -78,7 +78,7 @@ public class ProductController {
         nameFieldUpdate.setText(selectedProduct.getName());
         priceFieldUpdate.setText(selectedProduct.getPrice().toString());
         remainingFieldUpdate.setText(selectedProduct.getRemaining().toString());
-        pathFieldUpdate.setText(selectedProduct.getPath());
+        //pathFieldUpdate.setText(selectedProduct.getPath());
         categoryBoxUpdate.getSelectionModel().select(selectedProduct.getCategory());
     }
 

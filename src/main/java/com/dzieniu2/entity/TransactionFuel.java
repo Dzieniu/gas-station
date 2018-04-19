@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(exclude = {"employee", "customer", "fuel", "products"})
 @ToString(exclude = {"employee", "customer", "fuel", "products"})
-public class Transaction {
+public class TransactionFuel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Transaction {
     private Double fuelPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = true)
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,14 +40,14 @@ public class Transaction {
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fuel_id", nullable = true)
+    @JoinColumn(name = "fuel_id", nullable = false)
     private Fuel fuel;
 
-    @ManyToMany
-    @JoinTable(name = "transaction_product", joinColumns = {
-            @JoinColumn(name = "transaction_id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id")})
-    private Set<Product> products = new HashSet(0);
+//    @ManyToMany
+//    @JoinTable(name = "transaction_product", joinColumns = {
+//            @JoinColumn(name = "transaction_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "product_id")})
+//    private Set<Product> products = new HashSet(0);
 
     @PrePersist
     private void setTransactionDate() {

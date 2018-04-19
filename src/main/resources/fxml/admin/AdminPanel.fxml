@@ -211,7 +211,7 @@
                                     <PropertyValueFactory property="totalPrice" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="transaction date">
+                            <TableColumn style="-fx-alignment: CENTER" prefWidth="75.0" text="transactionFuel date">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="transactionDate" />
                                 </cellValueFactory>

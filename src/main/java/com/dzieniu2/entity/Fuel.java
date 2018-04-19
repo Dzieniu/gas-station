@@ -26,5 +26,5 @@ public class Fuel {
     private Container container;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fuel")
-    private Set<Transaction> transactions = new HashSet(0);
+    private Set<TransactionFuel> transactionFuels = new HashSet(0);
 }

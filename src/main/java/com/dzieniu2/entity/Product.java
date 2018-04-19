@@ -21,8 +21,11 @@ public class Product {
     private Double price;
     private Integer remaining;
     private ProductCategory category;
-    private String path;
+
+    @Column(name = "image")
+    @Lob
+    private byte[] image;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
-    private Set<Transaction> transactions = new HashSet(0);
+    private Set<TransactionProduct> transactionProduct = new HashSet(0);
 }
