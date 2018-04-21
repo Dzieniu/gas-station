@@ -2,15 +2,19 @@ package com.dzieniu2.controller.employee;
 
 import com.dzieniu2.entity.Product;
 import com.dzieniu2.repository.ProductRepository;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXScrollPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +25,29 @@ public class ProductListController {
     private GridPane productGrid;
 
     @FXML
+    private JFXScrollPane scrollPane;
+
+    @FXML
     public void initialize() throws IOException {
+        BorderPane borderPane = new BorderPane();
+
+        JFXButton buttonBack = new JFXButton("<-");
+        buttonBack.setButtonType(JFXButton.ButtonType.RAISED);
+        buttonBack.setStyle("-fx-background-color: #ffffff");
+
+        Label labelInfo = new Label("1. Wybierz produkty");
+        labelInfo.setFont(Font.font(20));
+        labelInfo.setTextFill(Paint.valueOf("#ffffff"));
+
+        JFXButton buttonNext = new JFXButton("->");
+        buttonNext.setButtonType(JFXButton.ButtonType.RAISED);
+        buttonNext.setStyle("-fx-background-color: #ffffff");
+
+        borderPane.setLeft(buttonBack);
+        borderPane.setRight(buttonNext);
+        borderPane.setCenter(labelInfo);
+        borderPane.setPadding(new Insets(25,20,25,20));
+        scrollPane.getTopBar().getChildren().add(borderPane);
         loadProducts();
     }
 
@@ -43,7 +69,7 @@ public class ProductListController {
                     AnchorPane pane = loader.load();
                     ProductContainerController productContainerController = loader.getController();
                     productContainerController.setName(thisProduct.getName());
-                    Image image = new Image("/product-images/harnas.png");
+                    Image image = new Image(new ByteArrayInputStream(thisProduct.getImage()));
                     productContainerController.setImage(image);
                     productGrid.add(pane,j,i);
                 }

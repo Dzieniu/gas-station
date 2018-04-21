@@ -4,7 +4,7 @@ import com.dzieniu2.entity.TransactionFuel;
 import com.dzieniu2.repository.CustomerRepository;
 import com.dzieniu2.repository.EmployeeRepository;
 import com.dzieniu2.repository.FuelRepository;
-import com.dzieniu2.repository.TransactionRepository;
+import com.dzieniu2.repository.FuelTransactionRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -34,7 +34,7 @@ public class TransactionController {
 
     @FXML
     public void createTransaction(){
-        TransactionRepository transactionRepository = new TransactionRepository();
+        FuelTransactionRepository fuelTransactionRepository = new FuelTransactionRepository();
         EmployeeRepository employeeRepository = new EmployeeRepository();
         CustomerRepository customerRepository = new CustomerRepository();
         FuelRepository fuelRepository = new FuelRepository();
@@ -45,13 +45,13 @@ public class TransactionController {
         transactionFuel.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
         transactionFuel.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldCreate.getSelectionModel().getSelectedItem().toString())));
         transactionFuel.setFuel(fuelRepository.findByName(fuelIdFieldCreate.getSelectionModel().getSelectedItem().toString()));
-        transactionRepository.add(transactionFuel);
+        fuelTransactionRepository.add(transactionFuel);
         adminController.switchTab();
         closeWindow();
     }
 
     @FXML void updateTransaction(){
-        TransactionRepository transactionRepository = new TransactionRepository();
+        FuelTransactionRepository fuelTransactionRepository = new FuelTransactionRepository();
         EmployeeRepository employeeRepository = new EmployeeRepository();
         CustomerRepository customerRepository = new CustomerRepository();
         FuelRepository fuelRepository = new FuelRepository();
@@ -61,14 +61,14 @@ public class TransactionController {
         selectedTransactionFuel.setEmployee(employeeRepository.findById(Long.parseLong(employeeIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
         selectedTransactionFuel.setCustomer(customerRepository.findById(Long.parseLong(customerIdFieldUpdate.getSelectionModel().getSelectedItem().toString())));
         selectedTransactionFuel.setFuel(fuelRepository.findByName(fuelIdFieldUpdate.getSelectionModel().getSelectedItem().toString()));
-        transactionRepository.update(selectedTransactionFuel);
+        fuelTransactionRepository.update(selectedTransactionFuel);
         adminController.switchTab();
         closeWindow();
     }
 
     @FXML void deleteTransaction(){
-        TransactionRepository transactionRepository = new TransactionRepository();
-        transactionRepository.delete(selectedTransactionFuel.getId());
+        FuelTransactionRepository fuelTransactionRepository = new FuelTransactionRepository();
+        fuelTransactionRepository.delete(selectedTransactionFuel.getId());
         adminController.switchTab();
         closeWindow();
     }

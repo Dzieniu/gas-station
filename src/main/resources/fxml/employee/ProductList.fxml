@@ -9,7 +9,7 @@
 
 <BorderPane prefWidth="1420.0" style="-fx-background-color: #777777;" stylesheets="@../../css/ScrollPane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.ProductListController">
    <top>
-      <JFXScrollPane prefWidth="200.0" style="-fx-pref-height: 929" BorderPane.alignment="CENTER">
+      <JFXScrollPane fx:id="scrollPane" prefWidth="200.0" style="-fx-pref-height: 929" BorderPane.alignment="CENTER">
          <content>
              <GridPane fx:id="productGrid" hgap="20" prefHeight="950" vgap="20">
                  <columnConstraints>

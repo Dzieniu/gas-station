@@ -38,12 +38,6 @@ public class MainController {
         newStage.show();
     }
 
-    @FXML
-    void exit() {
-        closeWindow();
-        System.exit(0);
-    }
-
     public void closeWindow(){
         Stage stage = (Stage) mainBorderPane.getScene().getWindow();
         stage.close();

@@ -10,8 +10,8 @@ import java.util.Set;
 
 @Entity(name = "fuel")
 @Data
-@EqualsAndHashCode(exclude = {"container", "transactions"})
-@ToString(exclude = {"container", "transactions"})
+@EqualsAndHashCode(exclude = {"container", "transactionFuels"})
+@ToString(exclude = {"container", "transactionFuels"})
 public class Fuel {
 
     @Id

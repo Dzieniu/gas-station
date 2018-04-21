@@ -1,5 +1,6 @@
 package com.dzieniu2.entity;
 
+import com.dzieniu2.entity.enums.ProductCategory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

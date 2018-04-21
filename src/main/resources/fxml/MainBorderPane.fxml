@@ -25,7 +25,6 @@
           <Menu mnemonicParsing="false" text="System">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#logOut" text="Logout" />
-               <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
             </items>
           </Menu>
         </menus>

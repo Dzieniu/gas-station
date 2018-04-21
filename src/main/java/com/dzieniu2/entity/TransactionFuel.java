@@ -9,10 +9,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "transaction")
+@Entity(name = "transaction_fuel")
 @Data
-@EqualsAndHashCode(exclude = {"employee", "customer", "fuel", "products"})
-@ToString(exclude = {"employee", "customer", "fuel", "products"})
+@EqualsAndHashCode(exclude = {"employee", "customer", "fuel"})
+@ToString(exclude = {"employee", "customer", "fuel"})
 public class TransactionFuel {
 
     @Id

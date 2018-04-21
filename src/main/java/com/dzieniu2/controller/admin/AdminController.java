@@ -18,7 +18,8 @@ import java.util.List;
 public class AdminController {
 
     @FXML
-    private TableView employeesTable,customersTable,productsTable,containersTable,fuelsTable,transactionsTable;
+    private TableView employeesTable,customersTable,productsTable,containersTable,fuelsTable,
+            fuelTransactionsTable,productTransactionsTable;
 
     @FXML
     private TabPane tableTabPane;
@@ -153,9 +154,14 @@ public class AdminController {
                 fuelsTable.getItems().addAll(fuels);
                 break;
             case 5:
-                TransactionRepository transactionRepository = new TransactionRepository();
-                List<TransactionFuel> transactionFuels = transactionRepository.findAll();
-                transactionsTable.getItems().addAll(transactionFuels);
+                FuelTransactionRepository fuelTransactionRepository = new FuelTransactionRepository();
+                List<TransactionFuel> fuelTransactions = fuelTransactionRepository.findAll();
+                fuelTransactionsTable.getItems().addAll(fuelTransactions);
+                break;
+            case 6:
+                ProductTransactionRepository productTransactionRepository = new ProductTransactionRepository();
+                List<TransactionProduct> productTransactions = productTransactionRepository.findAll();
+                productTransactionsTable.getItems().addAll(productTransactions);
                 break;
         }
     }
@@ -167,7 +173,8 @@ public class AdminController {
         if(productsTable!=null) productsTable.getItems().clear();
         if(containersTable!=null) containersTable.getItems().clear();
         if(fuelsTable!=null) fuelsTable.getItems().clear();
-        if(transactionsTable!=null) transactionsTable.getItems().clear();
+        if(fuelTransactionsTable!=null) fuelTransactionsTable.getItems().clear();
+        if(productTransactionsTable!=null) productTransactionsTable.getItems().clear();
     }
 
     public void adjustTables(){
@@ -177,7 +184,8 @@ public class AdminController {
         productsTable.setFixedCellSize(100);
         containersTable.setFixedCellSize(100);
         fuelsTable.setFixedCellSize(100);
-        transactionsTable.setFixedCellSize(100);
+        fuelTransactionsTable.setFixedCellSize(100);
+        productTransactionsTable.setFixedCellSize(100);
 
         employeesTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
@@ -234,39 +242,53 @@ public class AdminController {
             }
         });
 
-        transactionsTable.setOnMouseClicked(mouseEvent -> {
-            if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                TransactionFuel transactionFuel = (TransactionFuel) transactionsTable.getSelectionModel().getSelectedItem();
-                try {
-                    showTransactionWindow(transactionFuel);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        transactionsTable.setOnMouseClicked(mouseEvent -> {
+//            if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+//                TransactionFuel transactionFuel = (TransactionFuel) transactionsTable.getSelectionModel().getSelectedItem();
+//                try {
+//                    showTransactionWindow(transactionFuel);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
-        TableColumn<Container,String> column1 = (TableColumn<Container, String>) containersTable.getColumns().get(3);
-        column1.setCellValueFactory(param -> {
+        TableColumn<Container,String> fuelIdColumn = (TableColumn<Container, String>) containersTable.getColumns().get(3);
+        fuelIdColumn.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getFuel().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<TransactionFuel,String> column2 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(5);
+
+        TableColumn<TransactionFuel,String> column2 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(5);
         column2.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<TransactionFuel,String> column3 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(6);
+        TableColumn<TransactionFuel,String> column3 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(6);
         column3.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getEmployee().getId().toString());
             return simpleStringProperty;
         });
-        TableColumn<TransactionFuel,String> column4 = (TableColumn<TransactionFuel, String>) transactionsTable.getColumns().get(7);
+        TableColumn<TransactionFuel,String> column4 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(7);
         column4.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
             simpleStringProperty.setValue(param.getValue().getFuel().getId().toString());
+            return simpleStringProperty;
+        });
+
+        TableColumn<TransactionProduct,String> column5 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(3);
+        column5.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
+            return simpleStringProperty;
+        });
+        TableColumn<TransactionProduct,String> column6 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(4);
+        column6.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(param.getValue().getEmployee().getId().toString());
             return simpleStringProperty;
         });
     }

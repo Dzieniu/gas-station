@@ -1,9 +1,7 @@
 package com.dzieniu2.controller.admin;
 
-import com.dzieniu2.entity.Customer;
 import com.dzieniu2.entity.Product;
-import com.dzieniu2.entity.ProductCategory;
-import com.dzieniu2.repository.CustomerRepository;
+import com.dzieniu2.entity.enums.ProductCategory;
 import com.dzieniu2.repository.ProductRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;

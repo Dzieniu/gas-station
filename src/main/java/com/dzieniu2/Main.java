@@ -1,6 +1,8 @@
 package com.dzieniu2;
 
 import com.dzieniu2.entity.*;
+import com.dzieniu2.entity.enums.ProductCategory;
+import com.dzieniu2.entity.enums.Role;
 import com.dzieniu2.repository.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -59,41 +61,33 @@ public class Main extends Application
         Fuel f1 = new Fuel();
         f1.setName("Pb 95");
         f1.setPrice(3.50);
-        Container c1 = new Container();
-        c1.setId(1l);
-        f1.setContainer(c1);
+        f1.setContainer(co1);
         fr.add(f1);
         Fuel f2 = new Fuel();
         f2.setName("Pb 98");
         f2.setPrice(3.90);
-        Container c2 = new Container();
-        c2.setId(2l);
-        f2.setContainer(c2);
+        f2.setContainer(co2);
         fr.add(f2);
         Fuel f3 = new Fuel();
         f3.setName("ON");
         f3.setPrice(3.20);
-        Container c3 = new Container();
-        c3.setId(3l);
-        f3.setContainer(c3);
+        f3.setContainer(co3);
         fr.add(f3);
         Fuel f4 = new Fuel();
         f4.setName("LPG");
         f4.setPrice(1.2);
-        Container c4 = new Container();
-        c4.setId(4l);
-        f4.setContainer(c4);
+        f4.setContainer(co4);
         fr.add(f4);
 
         EmployeeRepository er = new EmployeeRepository();
         Employee e1 = new Employee();
         e1.setLogin("admin");
-        e1.setPassword("123");
+        e1.setPassword("");
         e1.setRole(Role.ADMIN);
         er.add(e1);
         Employee e2 = new Employee();
         e2.setLogin("employee");
-        e2.setPassword("123");
+        e2.setPassword("");
         e2.setRole(Role.EMPLOYEE);
         er.add(e2);
 
@@ -186,7 +180,7 @@ public class Main extends Application
         p10.setImage(getImage("zapiekanka.png"));
         pr.add(p10);
 
-        TransactionRepository tr = new TransactionRepository();
+        FuelTransactionRepository tr = new FuelTransactionRepository();
         TransactionFuel t1 = new TransactionFuel();
         t1.setFuelPrice(3.20);
         t1.setFuelQuantity(70.0);
@@ -280,9 +274,21 @@ public class Main extends Application
         t5.setFuel(fl5);
         tr.add(t5);
 
+        ProductTransactionRepository productTransactionRepository = new ProductTransactionRepository();
+        TransactionProduct transactionProduct1 = new TransactionProduct();
+        transactionProduct1.setCustomer(cs1);
+        transactionProduct1.setEmployee(em1);
+        Set<Product> productSet1 = new HashSet<>();
+        productSet1.add(p1);
+        productSet1.add(p2);
+        transactionProduct1.setProducts(productSet1);
+        transactionProduct1.setProductsPrice(213.56d);
+        productTransactionRepository.add(transactionProduct1);
 
-        //System.out.println(pr.findAll());
-        //System.out.println(pr.findBynameContaining("żu"));
+        co1.setFuel(f1);
+        co2.setFuel(f2);
+        co3.setFuel(f3);
+        co4.setFuel(f4);
     }
 
     public static byte[] getImage(String name) throws IOException {

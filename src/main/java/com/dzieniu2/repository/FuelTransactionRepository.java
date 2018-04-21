@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class TransactionRepository {
+public class FuelTransactionRepository {
 
     EntityManager em = EntitySingleton.getInstance();
 
@@ -15,7 +15,7 @@ public class TransactionRepository {
     }
 
     public List<TransactionFuel> findAll(){
-        Query query = em.createQuery("FROM transaction ");
+        Query query = em.createQuery("FROM transaction_fuel ");
         return (List<TransactionFuel>) query.getResultList();
     }
 
