@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400" prefWidth="500" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.dzieniu2.controller.employee.CameraController">
+    <top>
+        <BorderPane prefHeight="100.0">
+            <left>
+                <JFXButton fx:id="previousButton" onAction="#previousCamera" buttonType="RAISED" mnemonicParsing="false" prefHeight="50" prefWidth="50" style="-fx-background-color: #ffffff;" text="&lt;-" BorderPane.alignment="CENTER" />
+            </left>
+            <center>
+                <Label fx:id="cameraInfoLabel" text="Camera information" BorderPane.alignment="CENTER" />
+            </center>
+            <right>
+                <JFXButton fx:id="nextButton" onAction="#nextCamera" buttonType="RAISED" mnemonicParsing="false" prefHeight="50" prefWidth="50" style="-fx-background-color: #ffffff;" text="-&gt;" BorderPane.alignment="CENTER" />
+            </right>
+            <padding>
+                <Insets left="20.0" right="20.0" />
+            </padding>
+        </BorderPane>
+    </top>
+    <bottom>
+        <AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #909090;">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+            <children>
+                <ImageView fx:id="cameraPane" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

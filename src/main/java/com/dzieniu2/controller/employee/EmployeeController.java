@@ -14,6 +14,14 @@ public class EmployeeController {
     private BorderPane mainBorderPane;
 
     @FXML
+    private BorderPane cameraPane;
+
+    @FXML
+    public void initialize() throws IOException {
+        loadCamera();
+    }
+
+    @FXML
     void toGasTanks(MouseEvent event) throws IOException {
         GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/GasTanks.fxml"));
         mainBorderPane.setCenter(two);
@@ -35,5 +43,10 @@ public class EmployeeController {
     void toTwo(MouseEvent event) throws IOException {
         GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/Two.fxml"));
         mainBorderPane.setCenter(two);
+    }
+
+    private void loadCamera() throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/CameraPane.fxml"));
+        cameraPane.setCenter(pane);
     }
 }
