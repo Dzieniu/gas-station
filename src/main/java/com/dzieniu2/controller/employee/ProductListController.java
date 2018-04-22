@@ -5,11 +5,8 @@ import com.dzieniu2.repository.ProductRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 public class ProductListController
@@ -26,50 +23,27 @@ public class ProductListController
         List<Product> products = productRepository.findAll();
         int rowNumber = 0;
 
-        for (int i = 0; i < products.size(); i++)
-        {
-                for(int j = 0; j < productGrid.getColumnConstraints().size(); j++)
-                {
-                    ProductContainerController PCController = new ProductContainerController(products.get(i));
-                    System.out.println(products.get(i).getName().toString());
+        for (Product product : products) {
+            for (int j = 0; j < productGrid.getColumnConstraints().size(); j++) {
+                ProductContainerController PCController = new ProductContainerController(product);
+                System.out.println(product.getName());
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/ProductContainer.fxml"));
-                    loader.setController(PCController);
-                    VBox pContainer = loader.load();
-                    productGrid.add(pContainer,j,rowNumber);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/ProductContainer.fxml"));
+                loader.setController(PCController);
+                VBox pContainer = loader.load();
+                productGrid.add(pContainer, j, rowNumber);
 
-                    if(j == 3)
-                        {
-                            rowNumber++;
-                            productGrid.addRow(rowNumber);
-                            break;
-                        }
+                if (j == 3) {
+                    rowNumber++;
+                    productGrid.addRow(rowNumber);
+                    break;
                 }
+            }
 
         }
     }
 
 }
 
-//        for (int i = 0; i < products.size()/4; i++) {
-//            RowConstraints row = new RowConstraints();
-//            row.setMinHeight(200);
-//            productGrid.getRowConstraints().add(row);
-//        }
-//        Iterator<Product> iterator = products.iterator();
-//
-//        for (int i = 0; i < productGrid.getRowConstraints().size(); i++) {
-//            for (int j= 0; j < 3; j++) {
-//                if(iterator.hasNext()){
-//                    ProductContainerController PCController = new ProductContainerController(products.get(i));
-//
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/ProductContainer.fxml"));
-//                    loader.setController(PCController);
-//                    VBox pContainer = loader.load();
-//                    productGrid.add(pContainer,i,j);
-//                }
-//            }
-//
-//        }
 
 
