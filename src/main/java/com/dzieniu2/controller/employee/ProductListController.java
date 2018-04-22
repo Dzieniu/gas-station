@@ -66,7 +66,7 @@ public class ProductListController {
                 if(iterator.hasNext()){
                     Product thisProduct = iterator.next();
                     loader = new FXMLLoader(getClass().getResource("/fxml/employee/ProductContainer.fxml"));
-                    AnchorPane pane = loader.load();
+                    BorderPane pane = loader.load();
                     ProductContainerController productContainerController = loader.getController();
                     productContainerController.setName(thisProduct.getName());
                     Image image = new Image(new ByteArrayInputStream(thisProduct.getImage()));
