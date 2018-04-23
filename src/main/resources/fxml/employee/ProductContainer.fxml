@@ -7,10 +7,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="335" prefWidth="335" style="-fx-background-color: #ffffff" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.ProductContainerController">
+<BorderPane prefHeight="335" prefWidth="335" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.ProductContainerController">
     <top>
-        <Label fx:id="nameLabel" alignment="CENTER" prefHeight="36.0" prefWidth="335.0" text="Label" />
+        <Label fx:id="nameLabel" alignment="CENTER" prefHeight="36.0" prefWidth="335.0" text="Label">
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font></Label>
     </top>
     <center>
         <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="73.0" pickOnBounds="true" />
@@ -18,19 +25,17 @@
     <bottom>
         <HBox alignment="center" prefHeight="100">
             <children>
-                <JFXButton fx:id="lessButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffffff;" text="-" />
-                <TextField fx:id="amountField" prefHeight="30.0" prefWidth="30.0">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin></TextField>
-                <JFXButton fx:id="moreButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="31.0" prefWidth="36.0" style="-fx-background-color: #ffffff;" text="+">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin></JFXButton>
-                <JFXButton fx:id="addButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #ffffff;" text="Dodaj">
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin></JFXButton>
+                <JFXButton fx:id="lessButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: #d03c3c;" text="-" textFill="WHITE" />
+                <TextField fx:id="amountField" prefHeight="40.0" prefWidth="60.0">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </TextField>
+                <JFXButton fx:id="moreButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: #4cb137;" text="+" textFill="WHITE">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </JFXButton>
             </children>
         </HBox>
     </bottom>

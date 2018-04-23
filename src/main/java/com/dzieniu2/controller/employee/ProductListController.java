@@ -1,6 +1,7 @@
 package com.dzieniu2.controller.employee;
 
 import com.dzieniu2.entity.Product;
+import com.dzieniu2.other.ShoppingCart;
 import com.dzieniu2.repository.ProductRepository;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXScrollPane;
@@ -16,6 +17,7 @@ import javafx.scene.text.Font;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class ProductListController {
 
     @FXML
     private JFXScrollPane scrollPane;
+
+    private ShoppingCart shoppingCart;
 
     @FXML
     public void initialize() throws IOException {
@@ -49,6 +53,8 @@ public class ProductListController {
         borderPane.setPadding(new Insets(25,20,25,20));
         scrollPane.getTopBar().getChildren().add(borderPane);
         loadProducts();
+
+        shoppingCart = new ShoppingCart();
     }
 
     public void loadProducts() throws IOException {
@@ -68,9 +74,15 @@ public class ProductListController {
                     loader = new FXMLLoader(getClass().getResource("/fxml/employee/ProductContainer.fxml"));
                     BorderPane pane = loader.load();
                     ProductContainerController productContainerController = loader.getController();
-                    productContainerController.setName(thisProduct.getName());
-                    Image image = new Image(new ByteArrayInputStream(thisProduct.getImage()));
-                    productContainerController.setImage(image);
+                    productContainerController.initialize(thisProduct);
+
+//                    productContainerController.getLessButton().setOnAction(event -> {
+//                        shoppingCart.remove(thisProduct);
+//                    });
+//                    productContainerController.getMoreButton().setOnAction(event -> {
+//                        shoppingCart.add(thisProduct);
+//                    });
+
                     productGrid.add(pane,j,i);
                 }
             }

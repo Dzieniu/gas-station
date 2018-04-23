@@ -36,7 +36,7 @@ public class CameraController {
 
         ArrayList<Image> list = new ArrayList<>();
         Arrays.asList(directory.listFiles()).forEach(x -> list.add(new Image(new File(cameraDirectory).getName()+"/"+x.getName(),
-                500,300,false,true)));
+                400,250,false,true)));
         cameraList = new CameraList(list);
     }
 
