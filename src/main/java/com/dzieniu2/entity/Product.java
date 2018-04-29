@@ -1,5 +1,6 @@
 package com.dzieniu2.entity;
 
+import com.dzieniu2.entity.enums.ProductCategory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -21,32 +22,11 @@ public class Product {
     private Double price;
     private Integer remaining;
     private ProductCategory category;
-    private String path;
+
+    @Column(name = "image")
+    @Lob
+    private byte[] image;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
-    private Set<Transaction> transactions = new HashSet(0);
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public Integer getRemaining() {
-        return remaining;
-    }
-
-    public ProductCategory getCategory() {
-        return category;
-    }
-
-    public String getPath() {
-        return path;
-    }
+    private Set<TransactionProduct> transactionProduct = new HashSet(0);
 }

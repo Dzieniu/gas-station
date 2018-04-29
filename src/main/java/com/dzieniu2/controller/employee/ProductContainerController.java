@@ -6,45 +6,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import com.dzieniu2.entity.Product;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class ProductContainerController {
 
     @FXML
-    private Label productName;
+    Label nameLabel;
 
     @FXML
-    private ImageView productImg;
+    ImageView imageView;
 
     @FXML
-    private Button decreaseBtn;
+    TextField amountField;
 
     @FXML
-    private TextField amountField;
+    Button lessButton,moreButton,addButton;
 
     @FXML
-    private Button increaseBtn;
-
-    @FXML
-    private Button addProductBtn;
-
-    private Product ID;
-    public ProductContainerController(Product ID)
-    {
-        this.ID = ID;
-    }
-
-    @FXML
-    public void initialize() throws FileNotFoundException {
-        productName.setText(ID.getName());
-        //FileInputStream input = new FileInputStream("/product-images/"+ ID.getPath());
-        //Image image = new Image(input);
-        //productImg.imageProperty().setValue(image);
+    public void initialize(){
 
     }
 
+    public void setName(String text){
+        nameLabel.setText(text);
+    }
 
+    public void setImage(Image image){
+        imageView.setImage(image);
+    }
 }

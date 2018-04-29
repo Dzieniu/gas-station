@@ -1,4 +1,4 @@
-package com.dzieniu2.entity;
+package com.dzieniu2.entity.enums;
 
 public enum ProductCategory {
 

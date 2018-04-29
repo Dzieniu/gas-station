@@ -1,6 +1,8 @@
 package com.dzieniu2;
 
 import com.dzieniu2.entity.*;
+import com.dzieniu2.entity.enums.ProductCategory;
+import com.dzieniu2.entity.enums.Role;
 import com.dzieniu2.repository.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,12 +24,12 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        loadData();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 
-        //loadData();
     }
 
 
@@ -32,7 +38,7 @@ public class Main extends Application
         launch(args);
     }
 
-    public void loadData() {
+    public void loadData() throws IOException {
         ContainerRepository cr = new ContainerRepository();
         Container co1 = new Container();
         co1.setMaxCapacity(20000l);
@@ -55,41 +61,33 @@ public class Main extends Application
         Fuel f1 = new Fuel();
         f1.setName("Pb 95");
         f1.setPrice(3.50);
-        Container c1 = new Container();
-        c1.setId(1l);
-        f1.setContainer(c1);
+        f1.setContainer(co1);
         fr.add(f1);
         Fuel f2 = new Fuel();
         f2.setName("Pb 98");
         f2.setPrice(3.90);
-        Container c2 = new Container();
-        c2.setId(2l);
-        f2.setContainer(c2);
+        f2.setContainer(co2);
         fr.add(f2);
         Fuel f3 = new Fuel();
         f3.setName("ON");
         f3.setPrice(3.20);
-        Container c3 = new Container();
-        c3.setId(3l);
-        f3.setContainer(c3);
+        f3.setContainer(co3);
         fr.add(f3);
         Fuel f4 = new Fuel();
         f4.setName("LPG");
         f4.setPrice(1.2);
-        Container c4 = new Container();
-        c4.setId(4l);
-        f4.setContainer(c4);
+        f4.setContainer(co4);
         fr.add(f4);
 
         EmployeeRepository er = new EmployeeRepository();
         Employee e1 = new Employee();
         e1.setLogin("admin");
-        e1.setPassword("123");
+        e1.setPassword("");
         e1.setRole(Role.ADMIN);
         er.add(e1);
         Employee e2 = new Employee();
         e2.setLogin("employee");
-        e2.setPassword("123");
+        e2.setPassword("");
         e2.setRole(Role.EMPLOYEE);
         er.add(e2);
 
@@ -116,74 +114,109 @@ public class Main extends Application
         p1.setName("Harnaś");
         p1.setPrice(1.50);
         p1.setRemaining(102);
-        p1.setPath("hranas.png");
+        p1.setImage(getImage("harnas.png"));
         pr.add(p1);
         Product p2 = new Product();
         p2.setCategory(ProductCategory.ALCOHOL);
         p2.setName("Żubr");
         p2.setPrice(1.70);
         p2.setRemaining(13);
-        p2.setPath("zubr.png");
+        p2.setImage(getImage("zubr.png"));
         pr.add(p2);
         Product p3 = new Product();
         p3.setCategory(ProductCategory.ALCOHOL);
         p3.setName("Żubrówka");
         p3.setPrice(18.90);
         p3.setRemaining(24);
-        p3.setPath("zubrowka.png");
+        p3.setImage(getImage("zubrowka.png"));
         pr.add(p3);
         Product p4 = new Product();
         p4.setCategory(ProductCategory.FOOD);
         p4.setName("Snickers");
         p4.setPrice(2.20);
         p4.setRemaining(334);
-        p4.setPath("snickers.png");
+        p4.setImage(getImage("snickers.png"));
         pr.add(p4);
         Product p5 = new Product();
         p5.setCategory(ProductCategory.FOOD);
         p5.setName("Milka");
         p5.setPrice(4.00);
         p5.setRemaining(30);
-        p5.setPath("milka.png");
+        p5.setImage(getImage("milka.png"));
         pr.add(p5);
         Product p6 = new Product();
         p6.setCategory(ProductCategory.FOOD);
         p6.setName("Śmiej Żelki");
         p6.setPrice(3.70);
         p6.setRemaining(89);
-        p6.setPath("zelki.png");
+        p6.setImage(getImage("zelki.png"));
         pr.add(p6);
         Product p7 = new Product();
         p7.setCategory(ProductCategory.ACCESSORIES);
         p7.setName("Płyn do spyskiwaczy");
         p7.setPrice(15.90);
         p7.setRemaining(45);
-        p7.setPath("plyn.png");
+        p7.setImage(getImage("plyn.png"));
         pr.add(p7);
         Product p8 = new Product();
         p8.setCategory(ProductCategory.ACCESSORIES);
         p8.setName("Plak");
         p8.setPrice(4.50);
         p8.setRemaining(75);
-        p8.setPath("plak.png");
+        p8.setImage(getImage("plak.png"));
         pr.add(p8);
         Product p9 = new Product();
         p9.setCategory(ProductCategory.SNACK);
         p9.setName("Hot-Dog");
         p9.setPrice(6.90);
         p9.setRemaining(47);
-        p9.setPath("hot-dog.png");
+        p9.setImage(getImage("hot-dog.png"));
         pr.add(p9);
         Product p10 = new Product();
         p10.setCategory(ProductCategory.SNACK);
         p10.setName("Zapiekanka");
         p10.setPrice(4.50);
         p10.setRemaining(56);
-        p10.setPath("zapiekanka.png");
+        p10.setImage(getImage("zapiekanka.png"));
         pr.add(p10);
+        Product p11 = new Product();
+        p11.setCategory(ProductCategory.FOOD);
+        p11.setName("Orzeszki ziemne");
+        p11.setPrice(7.00);
+        p11.setRemaining(25);
+        p11.setImage(getImage("orzeszki.jpg"));
+        pr.add(p11);
+        Product p12 = new Product();
+        p12.setCategory(ProductCategory.FOOD);
+        p12.setName("Lays");
+        p12.setPrice(7.00);
+        p12.setRemaining(25);
+        p12.setImage(getImage("lays.png"));
+        pr.add(p12);
+        Product p13 = new Product();
+        p13.setCategory(ProductCategory.FOOD);
+        p13.setName("Kawa");
+        p13.setPrice(7.00);
+        p13.setRemaining(25);
+        p13.setImage(getImage("kawa.png"));
+        pr.add(p13);
+        Product p14 = new Product();
+        p14.setCategory(ProductCategory.FOOD);
+        p14.setName("Woda");
+        p14.setPrice(7.00);
+        p14.setRemaining(25);
+        p14.setImage(getImage("woda.jpg"));
+        pr.add(p14);
+        Product p15 = new Product();
+        p15.setCategory(ProductCategory.FOOD);
+        p15.setName("Coca-cola");
+        p15.setPrice(7.00);
+        p15.setRemaining(25);
+        p15.setImage(getImage("coca-cola.jpg"));
+        pr.add(p15);
 
-        TransactionRepository tr = new TransactionRepository();
-        Transaction t1 = new Transaction();
+        FuelTransactionRepository tr = new FuelTransactionRepository();
+        TransactionFuel t1 = new TransactionFuel();
         t1.setFuelPrice(3.20);
         t1.setFuelQuantity(70.0);
         t1.setTotalPrice(224.0);
@@ -198,7 +231,7 @@ public class Main extends Application
         t1.setFuel(fl1);
         tr.add(t1);
 
-        Transaction t2 = new Transaction();
+        TransactionFuel t2 = new TransactionFuel();
         t2.setFuelPrice(3.20);
         t2.setFuelQuantity(44.2);
         t2.setTotalPrice(141.44);
@@ -221,10 +254,9 @@ public class Main extends Application
         Product prod3 = new Product();
         prod3.setId(9l);
         products.add(prod3);
-        t2.setProducts(products);
         tr.add(t2);
 
-        Transaction t3 = new Transaction();
+        TransactionFuel t3 = new TransactionFuel();
         t3.setFuelPrice(3.5);
         t3.setFuelQuantity(115.1);
         t3.setTotalPrice(402.85);
@@ -239,7 +271,7 @@ public class Main extends Application
         t3.setFuel(fl3);
         tr.add(t3);
 
-        Transaction t4 = new Transaction();
+        TransactionFuel t4 = new TransactionFuel();
         t4.setFuelPrice(3.5);
         t4.setFuelQuantity(88.8);
         t4.setTotalPrice(310.8);
@@ -260,10 +292,9 @@ public class Main extends Application
         Product prod5 = new Product();
         prod5.setId(10l);
         products2.add(prod5);
-        t4.setProducts(products2);
         tr.add(t4);
 
-        Transaction t5 = new Transaction();
+        TransactionFuel t5 = new TransactionFuel();
         t5.setFuelPrice(3.5);
         t5.setFuelQuantity(230.5);
         t5.setTotalPrice(806.75);
@@ -278,8 +309,25 @@ public class Main extends Application
         t5.setFuel(fl5);
         tr.add(t5);
 
+        ProductTransactionRepository productTransactionRepository = new ProductTransactionRepository();
+        TransactionProduct transactionProduct1 = new TransactionProduct();
+        transactionProduct1.setCustomer(cs1);
+        transactionProduct1.setEmployee(em1);
+        Set<Product> productSet1 = new HashSet<>();
+        productSet1.add(p1);
+        productSet1.add(p2);
+        transactionProduct1.setProducts(productSet1);
+        transactionProduct1.setProductsPrice(213.56d);
+        productTransactionRepository.add(transactionProduct1);
 
-        //System.out.println(pr.findAll());
-        System.out.println(pr.findBynameContaining("żu"));
+        co1.setFuel(f1);
+        co2.setFuel(f2);
+        co3.setFuel(f3);
+        co4.setFuel(f4);
+    }
+
+    public static byte[] getImage(String name) throws IOException {
+        Path path = Paths.get(System.getProperty("user.dir") + "\\src\\main\\resources\\product-images\\" + name);
+        return Files.readAllBytes(path);
     }
 }

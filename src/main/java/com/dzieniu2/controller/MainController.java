@@ -24,7 +24,6 @@ public class MainController {
 
     @FXML
     public void initialize(){
-
     }
 
     @FXML
@@ -37,12 +36,6 @@ public class MainController {
         newStage.setScene(new Scene(root));
         newStage.initStyle(StageStyle.UNDECORATED);
         newStage.show();
-    }
-
-    @FXML
-    void exit() {
-        closeWindow();
-        System.exit(0);
     }
 
     public void closeWindow(){

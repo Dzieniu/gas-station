@@ -10,8 +10,8 @@ import java.util.Set;
 
 @Entity(name = "fuel")
 @Data
-@EqualsAndHashCode(exclude = {"container", "transactions"})
-@ToString(exclude = {"container", "transactions"})
+@EqualsAndHashCode(exclude = {"container", "transactionFuels"})
+@ToString(exclude = {"container", "transactionFuels"})
 public class Fuel {
 
     @Id
@@ -26,5 +26,5 @@ public class Fuel {
     private Container container;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fuel")
-    private Set<Transaction> transactions = new HashSet(0);
+    private Set<TransactionFuel> transactionFuels = new HashSet(0);
 }
