@@ -27,3 +27,5 @@ Sprzedawca ma dostęp do widoku z kamer zamontowanych na stacji oraz do podgląd
 
 ## Diagram związków encji
 ![Diagram związków encji](https://drive.google.com/uc?id=1m850XDNU7siljMD-GGB10ic1VQY5y-oe)
+
+Raporty z przebiegu prac można znaleźć [tutaj](https://github.com/Dzieniu2/gas-station/blob/master/reports.md)
