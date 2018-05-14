@@ -1,5 +1,6 @@
 package com.dzieniu2.controller.employee;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
@@ -35,7 +36,7 @@ public class EmployeeController {
 
     @FXML
     void toThree(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/Three.fxml"));
+        BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/AddClient.fxml"));
         mainBorderPane.setCenter(two);
     }
 
@@ -48,5 +49,24 @@ public class EmployeeController {
     private void loadCamera() throws IOException {
         BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/CameraPane.fxml"));
         cameraPane.setCenter(pane);
+    }
+
+    @FXML
+    void Station2BtnClick(ActionEvent event) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/Station.fxml"));
+        mainBorderPane.setCenter(pane);
+    }
+
+
+    @FXML
+    void Station3BtnCllick(ActionEvent event) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/Station.fxml"));
+        mainBorderPane.setCenter(pane);
+    }
+
+    @FXML
+    void station1BtnClick(ActionEvent event) throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/Station.fxml"));
+        mainBorderPane.setCenter(pane);
     }
 }
