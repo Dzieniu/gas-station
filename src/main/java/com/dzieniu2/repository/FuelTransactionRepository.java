@@ -14,8 +14,13 @@ public class FuelTransactionRepository {
         return em.find(TransactionFuel.class, id);
     }
 
+    public List<TransactionFuel> findByDate(String date) {
+        String query = "from TransactionFuel as tf where cast(tf.transactionDate as string) like :date";
+        return em.createQuery(query, TransactionFuel.class).setParameter("date", date + "%").getResultList();
+    }
+
     public List<TransactionFuel> findAll(){
-        Query query = em.createQuery("FROM transaction_fuel ");
+        Query query = em.createQuery("FROM TransactionFuel ");
         return (List<TransactionFuel>) query.getResultList();
     }
 

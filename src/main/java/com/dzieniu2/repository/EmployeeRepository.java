@@ -16,12 +16,12 @@ public class EmployeeRepository {
     }
 
     public Employee findByLogin(String login){
-        Query query = em.createQuery("FROM employee E WHERE E.login = '"+login+"'");
+        Query query = em.createQuery("FROM Employee E WHERE E.login = '"+login+"'");
         return (Employee) query.getSingleResult();
     }
 
     public List<Employee> findAll(){
-        Query query = em.createQuery("FROM employee");
+        Query query = em.createQuery("FROM Employee");
         return (List<Employee>) query.getResultList();
     }
 

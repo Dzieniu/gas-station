@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "transaction_product")
+@Entity
 @Data
 @EqualsAndHashCode(exclude = {"employee", "customer", "products"})
 @ToString(exclude = {"employee", "customer", "products"})

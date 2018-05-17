@@ -16,8 +16,13 @@ public class ProductTransactionRepository {
     }
 
     public List<TransactionProduct> findAll(){
-        Query query = em.createQuery("FROM transaction_product ");
+        Query query = em.createQuery("FROM TransactionProduct ");
         return (List<TransactionProduct>) query.getResultList();
+    }
+
+    public List<TransactionProduct> findByDate(String date) {
+        String query = "from TransactionProduct as tp where cast(tp.transactionDate as string) like :date";
+        return em.createQuery(query, TransactionProduct.class).setParameter("date", date + "%").getResultList();
     }
 
     public void add(TransactionProduct transactionProduct) {

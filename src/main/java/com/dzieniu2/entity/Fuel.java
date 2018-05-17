@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "fuel")
+@Entity
 @Data
 @EqualsAndHashCode(exclude = {"container", "transactionFuels"})
 @ToString(exclude = {"container", "transactionFuels"})
@@ -26,5 +26,5 @@ public class Fuel {
     private Container container;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fuel")
-    private Set<TransactionFuel> transactionFuels = new HashSet(0);
+    private Set<TransactionFuel> transactionFuel = new HashSet(0);
 }

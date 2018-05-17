@@ -15,7 +15,7 @@ public class ContainerRepository {
     }
 
     public List<Container> findAll(){
-        Query query = em.createQuery("FROM container ");
+        Query query = em.createQuery("FROM Container ");
         return (List<Container>) query.getResultList();
     }
 

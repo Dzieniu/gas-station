@@ -9,10 +9,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "customer")
+@Entity
 @Data
-@EqualsAndHashCode(exclude = "transactions")
-@ToString(exclude = "transactions")
+@EqualsAndHashCode(exclude = {"transactionFuels", "transactionProduct"})
+@ToString(exclude = {"transactionFuels", "transactionProduct"})
 public class Customer {
 
     @Id
@@ -28,7 +28,7 @@ public class Customer {
     private String cardCode;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private Set<TransactionFuel> transactionFuels = new HashSet(0);
+    private Set<TransactionFuel> transactionFuel = new HashSet(0);
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private Set<TransactionProduct> transactionProduct = new HashSet(0);
