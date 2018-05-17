@@ -15,12 +15,12 @@ public class FuelRepository {
     }
 
     public Fuel findByName(String name){
-        Query query = em.createQuery("FROM fuel E WHERE E.name = '"+name+"'");
+        Query query = em.createQuery("FROM Fuel E WHERE E.name = '"+name+"'");
         return (Fuel) query.getSingleResult();
     }
 
     public List<Fuel> findAll(){
-        Query query = em.createQuery("FROM fuel ");
+        Query query = em.createQuery("FROM Fuel ");
         return (List<Fuel>) query.getResultList();
     }
 
