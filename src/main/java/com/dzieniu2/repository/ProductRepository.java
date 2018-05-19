@@ -15,12 +15,12 @@ public class ProductRepository {
     }
 
     public List<Product> findAll() {
-        Query query = em.createQuery("FROM product");
+        Query query = em.createQuery("FROM Product");
         return query.getResultList();
     }
 
     public List<Product> findBynameContaining(String exp) {
-        Query query = em.createQuery("SELECT p FROM product p WHERE p.name LIKE :expression");
+        Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :expression");
         query.setParameter("expression", "%"+exp+"%");
         return query.getResultList();
     }

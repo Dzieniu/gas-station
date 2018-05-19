@@ -2,16 +2,17 @@ package com.dzieniu2.controller.admin;
 
 import com.dzieniu2.entity.*;
 import com.dzieniu2.repository.*;
+import com.dzieniu2.service.ReportService;
+import com.itextpdf.text.DocumentException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,6 +24,12 @@ public class AdminController {
 
     @FXML
     private TabPane tableTabPane;
+
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    private Label calendarDate;
 
     @FXML
     public void initialize(){
@@ -291,5 +298,19 @@ public class AdminController {
             simpleStringProperty.setValue(param.getValue().getEmployee().getId().toString());
             return simpleStringProperty;
         });
+    }
+
+    @FXML
+    public void showDate() {
+        ReportService reportService = new ReportService();
+
+        try {
+            reportService.generateReport(datePicker.getValue());
+            calendarDate.setText("Raport został utworzony");
+        } catch (FileNotFoundException e) {
+            calendarDate.setText("Błąd przy tworzeniu raportu, spróbuj ponownie");
+        } catch (DocumentException e) {
+            calendarDate.setText("Błąd przy tworzeniu raportu, spróbuj ponownie");
+        }
     }
 }

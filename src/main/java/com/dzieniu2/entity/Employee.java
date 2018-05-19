@@ -9,10 +9,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "employee")
+@Entity
 @Data
-@EqualsAndHashCode(exclude = "transactions")
-@ToString(exclude = "transactions")
+@EqualsAndHashCode(exclude = {"transactionFuel", "transactionProduct"})
+@ToString(exclude = {"transactionFuel", "transactionProduct"})
 public class Employee {
 
     @Id
@@ -23,7 +23,7 @@ public class Employee {
     private Role role;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
-    private Set<TransactionFuel> transactionFuels = new HashSet(0);
+    private Set<TransactionFuel> transactionFuel = new HashSet(0);
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
     private Set<TransactionProduct> transactionProduct = new HashSet(0);

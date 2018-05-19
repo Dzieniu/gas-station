@@ -15,7 +15,7 @@ public class CustomerRepository {
     }
 
     public List<Customer> findAll(){
-        Query query = em.createQuery("FROM customer ");
+        Query query = em.createQuery("FROM Customer ");
         return (List<Customer>) query.getResultList();
     }
 

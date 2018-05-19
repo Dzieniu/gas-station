@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "transaction_fuel")
+@Entity
 @Data
 @EqualsAndHashCode(exclude = {"employee", "customer", "fuel"})
 @ToString(exclude = {"employee", "customer", "fuel"})
@@ -42,12 +42,6 @@ public class TransactionFuel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fuel_id", nullable = false)
     private Fuel fuel;
-
-//    @ManyToMany
-//    @JoinTable(name = "transaction_product", joinColumns = {
-//            @JoinColumn(name = "transaction_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "product_id")})
-//    private Set<Product> products = new HashSet(0);
 
     @PrePersist
     private void setTransactionDate() {

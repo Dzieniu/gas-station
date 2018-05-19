@@ -9,10 +9,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "product")
+@Entity
 @Data
-@EqualsAndHashCode(exclude = "transactions")
-@ToString(exclude = "transactions")
+@EqualsAndHashCode(exclude = "transactionProduct")
+@ToString(exclude = "transactionProduct")
 public class Product {
 
     @Id
