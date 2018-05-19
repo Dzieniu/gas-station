@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +30,9 @@ public class ProductListController {
     @FXML
     private JFXScrollPane scrollPane;
 
-    private ShoppingCart shoppingCart;
+    private VBox productList;
+
+    private ArrayList<ProductContainerController> shoppingCart;
 
     @FXML
     public void initialize() throws IOException {
@@ -54,7 +57,12 @@ public class ProductListController {
         scrollPane.getTopBar().getChildren().add(borderPane);
         loadProducts();
 
-        shoppingCart = new ShoppingCart();
+
+
+        productList = new VBox();
+        borderPane.setBottom(productList);
+        borderPane.getBottom().setStyle("-fx-padding: 20,20,20,20");
+        shoppingCart = new ArrayList<>();
     }
 
     public void loadProducts() throws IOException {
@@ -76,16 +84,43 @@ public class ProductListController {
                     ProductContainerController productContainerController = loader.getController();
                     productContainerController.initialize(thisProduct);
 
-//                    productContainerController.getLessButton().setOnAction(event -> {
-//                        shoppingCart.remove(thisProduct);
-//                    });
-//                    productContainerController.getMoreButton().setOnAction(event -> {
-//                        shoppingCart.add(thisProduct);
-//                    });
+                    productContainerController.getLessButton().setOnAction(event -> {
+                        if(shoppingCart.contains(productContainerController)){
+                            productContainerController.remove();
+                            if(productContainerController.getAmount()==0)
+                                shoppingCart.remove(productContainerController);
+                        }
+                        printShoppingCart();
+                    });
+                    productContainerController.getMoreButton().setOnAction(event -> {
+                        if(shoppingCart.contains(productContainerController)){
+                            productContainerController.add();
+                        }else{
+                            shoppingCart.add(productContainerController);
+                            productContainerController.add();
+                        }
+                        printShoppingCart();
+                    });
 
                     productGrid.add(pane,j,i);
                 }
             }
         }
+    }
+
+    public void printShoppingCart(){
+
+        shoppingCart.forEach(product -> System.out.println(product.getProduct().getName()+", "+product.getAmount()+"/"+product.getProduct().getRemaining()));
+        System.out.println();
+
+//        productList.getChildren().clear();
+//        shoppingCart.forEach(product -> {
+//            Label productLabel = new Label(product.getProduct().getName()+" x "+product.getAmount()+"/"+product.getProduct().getRemaining());
+//            productLabel.setPadding(new Insets(10,0,0,0));
+//            productLabel.setFont(Font.font(18));
+//            productLabel.setTextFill(Paint.valueOf("#ffffff"));
+//            productLabel.setStyle("-fx-background-color: rgba(8, 21, 32, 0.7);-fx-padding: 10,10,10,10");
+//            productList.getChildren().add(productLabel);
+//        });
     }
 }

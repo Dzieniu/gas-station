@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.Pane?>
 <BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.EmployeeController">
     <right>
         <VBox BorderPane.alignment="CENTER">
@@ -33,19 +28,19 @@
                                 <Insets />
                             </VBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onMouseClicked="#toThree" prefHeight="100.0" prefWidth="500.0" text="Lista produktów" />
                         <Separator prefHeight="100.0" prefWidth="500.0" />
-                        <Button mnemonicParsing="false" onMouseClicked="#toOne" prefHeight="100.0" prefWidth="500.0" text="One">
+                        <Button mnemonicParsing="false" onMouseClicked="#toOne" prefHeight="100.0" prefWidth="500.0" text="Transakcja">
                             <VBox.margin>
                                 <Insets />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#toTwo" prefHeight="100.0" prefWidth="500.0" text="Two">
+                        <Button mnemonicParsing="false" onMouseClicked="#toTwo" prefHeight="100.0" prefWidth="500.0" text="Dodawanie pracownika">
                             <VBox.margin>
                                 <Insets />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#toThree" prefHeight="100.0" prefWidth="500.0" text="Three" />
-                        <BorderPane prefHeight="400" prefWidth="500" fx:id="cameraPane"></BorderPane>
+                        <BorderPane fx:id="cameraPane" prefHeight="400" prefWidth="500" />
                     </children>
                 </VBox>
             </children>

@@ -13,29 +13,37 @@ import java.io.ByteArrayInputStream;
 public class ProductContainerController {
 
     @FXML
-    Label nameLabel;
+    private Label nameLabel;
 
     @FXML
-    ImageView imageView;
+    private ImageView imageView;
 
     @FXML
-    TextField amountField;
+    private TextField amountField;
 
     @FXML
-    Button lessButton,moreButton;
+    private Button lessButton,moreButton;
 
     private Product product;
+
+    private int remaining,amount;
 
     @FXML
     public void initialize(Product product){
         this.product = product;
+        this.remaining = product.getRemaining();
+        this.amount = 0;
         nameLabel.setText(product.getName());
         Image image = new Image(new ByteArrayInputStream(product.getImage()));
         imageView.setImage(image);
     }
 
-    public void setAmount(){
+    public Product getProduct() {
+        return product;
+    }
 
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Button getLessButton() {
@@ -46,7 +54,28 @@ public class ProductContainerController {
         return moreButton;
     }
 
-    public TextField getAmountField() {
-        return amountField;
+    public void add(){
+        if(remaining>0) amount++;
+    }
+
+    public void setAmount(int value){
+        if(value<=product.getRemaining()) amount = value;
+        else amount = product.getRemaining();
+    }
+
+    public void remove(){
+        if(amount>0) amount--;
+    }
+
+    public void removeAll(){
+        amount = 0;
+    }
+
+    public int getRemaining() {
+        return remaining;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }
