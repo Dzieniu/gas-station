@@ -5,6 +5,7 @@ import com.dzieniu2.entity.TransactionProduct;
 import com.dzieniu2.repository.FuelTransactionRepository;
 import com.dzieniu2.repository.ProductRepository;
 import com.dzieniu2.repository.ProductTransactionRepository;
+import com.dzieniu2.service.DateConverterService;
 import com.jfoenix.controls.JFXListView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -75,7 +76,7 @@ public class SummaryController {
             totalCost += cost;
             productsInfoLabel.setText("Total products cost: "+(Math.round(cost*Math.pow(10, 2))/Math.pow(10, 2)));
         }
-        currentDateLabel.setText(LocalDateTime.now().toString());
+        currentDateLabel.setText(DateConverterService.getCurrentDate());
         totalCostLabel.setText((Math.round(totalCost*Math.pow(10, 2))/Math.pow(10, 2))+" PLN");
     }
 

@@ -2,6 +2,7 @@ package com.dzieniu2.controller.admin;
 
 import com.dzieniu2.entity.*;
 import com.dzieniu2.repository.*;
+import com.dzieniu2.service.DateConverterService;
 import com.dzieniu2.service.ReportService;
 import com.itextpdf.text.DocumentException;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -13,10 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminController {
 
@@ -146,7 +151,11 @@ public class AdminController {
             case 1:
                 CustomerRepository customerRepository = new CustomerRepository();
                 List<Customer> customers = customerRepository.findAll();
-                customersTable.getItems().addAll(customers);
+                List<SimpleCustomer> simpleCustomers = customers.stream()
+                        .map(x -> new SimpleCustomer(x.getId(), x.getName(), x.getSurname(), x.getCardCode(), DateConverterService.formatDate(x.getRegisterDate())))
+                        .collect(Collectors.toList());
+
+                customersTable.getItems().addAll(simpleCustomers);
                 break;
             case 2:
                 ProductRepository productRepository = new ProductRepository();
@@ -210,7 +219,9 @@ public class AdminController {
 
         customersTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                Customer customer = (Customer) customersTable.getSelectionModel().getSelectedItem();
+                CustomerRepository customerRepository = new CustomerRepository();
+                SimpleCustomer simpleCustomer = (SimpleCustomer) customersTable.getSelectionModel().getSelectedItem();
+                Customer customer = customerRepository.findById(simpleCustomer.getId());
                 try {
                     showCustomerWindow(customer);
                 } catch (IOException e) {
@@ -327,5 +338,15 @@ public class AdminController {
             this.password = new SimpleStringProperty(employee.getPassword());
             this.role = new SimpleStringProperty(employee.getRole().toString());
         }
+    }
+
+    @AllArgsConstructor
+    @Data
+    public class SimpleCustomer {
+        private Long id;
+        private String name;
+        private String surname;
+        private String cardCode;
+        private String registerDate;
     }
 }

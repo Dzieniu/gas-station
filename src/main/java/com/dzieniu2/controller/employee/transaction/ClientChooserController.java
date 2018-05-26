@@ -2,6 +2,7 @@ package com.dzieniu2.controller.employee.transaction;
 
 import com.dzieniu2.entity.Customer;
 import com.dzieniu2.repository.CustomerRepository;
+import com.dzieniu2.service.DateConverterService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -84,7 +85,7 @@ public class ClientChooserController {
 
         if(customer!=null){
             customerNameLabel.setText(customer.getName()+" "+customer.getSurname());
-            customerRegisterDateLabel.setText(customer.getRegisterDate().toString());
+            customerRegisterDateLabel.setText(DateConverterService.formatDate(customer.getRegisterDate()));
             infoLabel.setText("");
             customerPane.setVisible(true);
             this.customer = customer;
