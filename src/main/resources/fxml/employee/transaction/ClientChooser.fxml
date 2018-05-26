@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.ClientChooserController">
+<BorderPane fx:id="borderPane" prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.CustomerController">
    <top>
       <BorderPane prefHeight="100.0" prefWidth="1420.0" style="-fx-background-color: #4059a9" BorderPane.alignment="CENTER">
           <center>
               <Label alignment="CENTER" prefHeight="45.0" prefWidth="274.0" style="-fx-text-fill: white;-fx-font-size: 30" text="3. Verify client" BorderPane.alignment="CENTER" />
           </center>
           <left>
-              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toDispensers" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
+              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openDispenserWindow" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
                       <Insets left="20.0" />
                   </BorderPane.margin></JFXButton>
           </left>
           <right>
-              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toSummary" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&gt;" BorderPane.alignment="CENTER">
+              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openSummaryWindow" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&gt;" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
                       <Insets right="20.0" />
                   </BorderPane.margin></JFXButton>

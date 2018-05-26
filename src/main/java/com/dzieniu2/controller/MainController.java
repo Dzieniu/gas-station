@@ -67,7 +67,7 @@ public class MainController {
                 mainBorderPane.setCenter(pane1);
                 break;
             case EMPLOYEE:
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/EmployeePanel.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/Employee.fxml"));
                 BorderPane pane = loader.load();
                 EmployeeController employeeController = loader.getController();
                 employeeController.setMainController(this);

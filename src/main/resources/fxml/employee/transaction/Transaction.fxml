@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx"  xmlns:fx="http://javafx.com/fxml" fx:controller="com.dzieniu2.controller.employee.transaction.TransactionController"
+<BorderPane fx:id="transactionPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.dzieniu2.controller.employee.transaction.TransactionController"
             prefHeight="1000.0" prefWidth="1420.0">
 
 </BorderPane>

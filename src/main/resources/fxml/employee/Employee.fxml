@@ -18,7 +18,7 @@
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin></JFXButton>
-                        <JFXButton fx:id="dispenserButton" buttonType="RAISED" mnemonicParsing="false" onAction="#toDispenser" prefHeight="100.0" prefWidth="239.0" style="-fx-background-color: ffffff" text="dispenserName">
+                        <JFXButton fx:id="dispenserButton" buttonType="RAISED" mnemonicParsing="false" onAction="#openDispenser" prefHeight="100.0" prefWidth="239.0" style="-fx-background-color: ffffff" text="dispenserName">
                             <HBox.margin>
                                 <Insets right="20.0" />
                             </HBox.margin></JFXButton>
@@ -33,17 +33,12 @@
                 </HBox>
                 <VBox prefHeight="900.0" prefWidth="500.0">
                     <children>
-                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toGasTanks" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" text="Station status">
-                            <VBox.margin>
-                                <Insets top="20.0" />
-                            </VBox.margin>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toProductList" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" text="Product list">
+                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openProductList" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" text="Product list">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin></JFXButton>
                         <Separator prefHeight="100.0" prefWidth="500.0" />
-                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toTransaction" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" stylesheets="@../../css/Styling.css" text="Transaction">
+                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openTransactionWindow" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" stylesheets="@../../css/Styling.css" text="Transaction">
                             <VBox.margin>
                                 <Insets bottom="40.0" />
                             </VBox.margin>
@@ -53,7 +48,7 @@
                         <String fx:value="btn-1e" />
                      </styleClass>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toThree" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" text="New client" />
+                        <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openAddClient" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: ffffff" text="New client" />
                         <BorderPane fx:id="cameraPane" prefHeight="400" prefWidth="500" />
                     </children>
                 </VBox>

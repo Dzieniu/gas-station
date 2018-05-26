@@ -32,7 +32,7 @@ public class DispenserController {
         class Wrapper<T> { T content ; }
         Wrapper<MouseEvent> eventWrapper = new Wrapper<>();
 
-        PauseTransition holdTimer = new PauseTransition(Duration.seconds(0.05));
+        PauseTransition holdTimer = new PauseTransition(Duration.seconds(0.01));
         holdTimer.setOnFinished(event -> {
             tank();
             holdTimer.playFromStart();

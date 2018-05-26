@@ -6,23 +6,22 @@ import com.dzieniu2.other.DispenserList;
 import com.dzieniu2.other.FuelDispenser;
 import com.dzieniu2.repository.ContainerRepository;
 import com.jfoenix.controls.JFXScrollPane;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import lombok.Data;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Data
 public class EmployeeController {
 
     @FXML
-    private BorderPane mainBorderPane;
+    private BorderPane mainBorderPane,transactionPane;
 
     @FXML
     private BorderPane cameraPane;
@@ -32,12 +31,14 @@ public class EmployeeController {
 
     private MainController mainController;
 
+    private TransactionController transactionController;
+
     private DispenserList dispenserList;
 
     @FXML
     public void initialize() throws IOException {
 
-        toStart();
+        openDefaultWindow();
 
         ContainerRepository containerRepository = new ContainerRepository();
         ArrayList<FuelDispenser> dispensers = new ArrayList<>();
@@ -52,7 +53,7 @@ public class EmployeeController {
     }
 
     @FXML
-    public void toStart(){
+    public void openDefaultWindow(){
 
         BorderPane imagePane = new BorderPane();
         ImageView imageView = new ImageView(new Image("images/station.jpg"));
@@ -62,36 +63,33 @@ public class EmployeeController {
     }
 
     @FXML
-    public void toGasTanks(MouseEvent event) throws IOException {
-        GridPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/GasTanks.fxml"));
-        mainBorderPane.setCenter(two);
-    }
-
-    @FXML
-    public void toProductList(MouseEvent event) throws IOException {
+    public void openProductList() throws IOException {
         JFXScrollPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/ProductList.fxml"));
         mainBorderPane.setCenter(two);
     }
 
     @FXML
-    public void toThree(MouseEvent event) throws IOException {
+    public void openAddClient() throws IOException {
         BorderPane two = FXMLLoader.load(getClass().getResource("/fxml/employee/AddClient.fxml"));
         mainBorderPane.setCenter(two);
     }
 
-    private void loadCamera() throws IOException {
-        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/CameraPane.fxml"));
-        cameraPane.setCenter(pane);
-    }
-
     @FXML
-    public void toDispenser(ActionEvent event) throws IOException {
+    public void openDispenser() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/Dispenser.fxml"));
         BorderPane pane = loader.load();
-        DispenserController stationController = loader.<DispenserController>getController();
+        DispenserController stationController = loader.getController();
         stationController.setFuelDispenser(dispenserList.getDispensers().get(dispenserList.getSelected()));
         mainBorderPane.setCenter(pane);
+    }
+
+    @FXML
+    public void openTransactionWindow() {
+
+        mainBorderPane.setCenter(transactionPane);
+        transactionController.getDispenserController().refreshData();
+        transactionController.getSummaryController().refreshData();
     }
 
     @FXML
@@ -104,25 +102,17 @@ public class EmployeeController {
         dispenserButton.setText(dispenserList.next().getContainer().getFuel().getName());
     }
 
-    @FXML
-    public void toTransaction() throws IOException{
+    private void loadCamera() throws IOException {
+        BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/employee/Camera.fxml"));
+        cameraPane.setCenter(pane);
+    }
+
+    public void setMainController(MainController mainController) throws IOException {
+        this.mainController = mainController;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/Transaction.fxml"));
-        BorderPane pane = loader.load();
-        TransactionController transactionController = loader.<TransactionController>getController();
+        transactionPane = loader.load();
+        transactionController = loader.getController();
         transactionController.setEmployeeController(this);
-        mainBorderPane.setCenter(pane);
-    }
-
-    public void setMainController(MainController mainController){
-        this.mainController = mainController;
-    }
-
-    public MainController getMainController() {
-        return mainController;
-    }
-
-    public DispenserList getDispenserList() {
-        return dispenserList;
     }
 }

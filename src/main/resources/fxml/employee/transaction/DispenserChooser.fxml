@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.DispenserChooserController">
+<BorderPane prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.DispenserController">
    <top>
       <BorderPane prefHeight="100.0" prefWidth="1420.0" style="-fx-background-color: #4059a9">
          <center>
             <Label alignment="CENTER" prefHeight="45.0" prefWidth="274.0" style="-fx-text-fill: white;-fx-font-size: 30" text="2. Choose dispenser" BorderPane.alignment="CENTER" />
          </center>
          <left>
-            <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toProducts" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
+            <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openProductsWindow" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="20.0" />
                </BorderPane.margin></JFXButton>
          </left>
          <right>
-            <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toClientCheck" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&gt;" BorderPane.alignment="CENTER">
+            <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#openCustomerWindow" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&gt;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="20.0" />
                </BorderPane.margin></JFXButton>
@@ -30,7 +30,7 @@
    </top>
    <center>
       <AnchorPane style="-fx-background-color: white">
-         <JFXButton fx:id="nextDispenserButton" buttonType="RAISED" layoutX="1061.0" layoutY="420.0" mnemonicParsing="false" onAction="#showNext" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: white" text="&gt;" />
+         <JFXButton fx:id="nextDispenserButton" buttonType="RAISED" layoutX="1061.0" layoutY="420.0" mnemonicParsing="false" onAction="#nextDispenser" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: white" text="&gt;" />
          <AnchorPane fx:id="dispenserPane" layoutX="425.0" layoutY="151.0" prefHeight="546.0" prefWidth="570.0" style="-fx-background-color: white;-fx-border-color: grey">
             <children>
                <Label fx:id="nameHlabel" alignment="CENTER" layoutX="197.0" layoutY="25.0" prefHeight="45.0" prefWidth="176.0" text="Dispenser">
@@ -82,7 +82,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </AnchorPane>
-         <JFXButton fx:id="prevDispenserButton" buttonType="RAISED" layoutX="271.0" layoutY="420.0" mnemonicParsing="false" onAction="#showPrevious" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: white" text="&lt;" />
+         <JFXButton fx:id="prevDispenserButton" buttonType="RAISED" layoutX="271.0" layoutY="420.0" mnemonicParsing="false" onAction="#previousDispenser" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: white" text="&lt;" />
       </AnchorPane>
    </center>
 </BorderPane>

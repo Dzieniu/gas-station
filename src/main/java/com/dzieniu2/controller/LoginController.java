@@ -3,17 +3,14 @@ package com.dzieniu2.controller;
 import com.dzieniu2.entity.Employee;
 import com.dzieniu2.repository.EmployeeRepository;
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import javax.persistence.NoResultException;
 import java.io.IOException;
@@ -80,7 +77,7 @@ public class LoginController {
 
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
-                        "/fxml/MainBorderPane.fxml"
+                        "/fxml/Main.fxml"
                 )
         );
         Stage stage = new Stage();

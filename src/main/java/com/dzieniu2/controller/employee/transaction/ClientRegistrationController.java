@@ -25,7 +25,7 @@ public class ClientRegistrationController {
 
     private String cardCode;
 
-    private ClientChooserController clientChooserController;
+    private CustomerController customerController;
 
     @FXML
     public void generateUID(ActionEvent event) {
@@ -53,7 +53,7 @@ public class ClientRegistrationController {
 
     @FXML
     public void backToCustomer(){
-        clientChooserController.backToCustomer();
+        customerController.openCustomerWindow();
     }
 
     private boolean validate(){
@@ -76,8 +76,8 @@ public class ClientRegistrationController {
         return true;
     }
 
-    public void setClientChooserController(ClientChooserController clientChooserController){
-        this.clientChooserController = clientChooserController;
+    public void setCustomerController(CustomerController customerController){
+        this.customerController = customerController;
     }
 }
 

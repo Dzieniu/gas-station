@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ShoppingList {
+public class ShoppingListController {
 
     @FXML
     private GridPane productGrid;
@@ -70,13 +70,7 @@ public class ShoppingList {
         buttonNext.setFont(Font.font(15));
         buttonNext.setButtonType(JFXButton.ButtonType.RAISED);
         buttonNext.setStyle("-fx-background-color: #ffffff;-fx-pref-width: 60;-fx-pref-height: 50");
-        buttonNext.setOnMouseClicked(event -> {
-            try {
-                toDispensers();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        buttonNext.setOnMouseClicked(event -> toDispensers());
 
         borderPane.setLeft(buttonPrevious);
         borderPane.setRight(buttonNext);
@@ -119,18 +113,18 @@ public class ShoppingList {
                     shoppingContainerController.initialize(thisProduct);
 
                     shoppingContainerController.getLessButton().setOnAction(event -> {
-                        if(transactionController.getShoppingCart().contains(shoppingContainerController)){
+                        if(transactionController.getChosenProducts().contains(shoppingContainerController)){
                             shoppingContainerController.remove();
                             if(shoppingContainerController.getAmount()==0)
-                                transactionController.getShoppingCart().remove(shoppingContainerController);
+                                transactionController.getChosenProducts().remove(shoppingContainerController);
                         }
                         printShoppingCart();
                     });
                     shoppingContainerController.getMoreButton().setOnAction(event -> {
-                        if(transactionController.getShoppingCart().contains(shoppingContainerController)){
+                        if(transactionController.getChosenProducts().contains(shoppingContainerController)){
                             shoppingContainerController.add();
                         }else{
-                            transactionController.getShoppingCart().add(shoppingContainerController);
+                            transactionController.getChosenProducts().add(shoppingContainerController);
                             shoppingContainerController.add();
                         }
                         printShoppingCart();
@@ -148,7 +142,7 @@ public class ShoppingList {
 
     public void printShoppingCart(){
 
-        transactionController.getShoppingCart().forEach(product -> System.out.println(product.getProduct().getName()+", "+product.getAmount()+"/"+product.getProduct().getRemaining()));
+        transactionController.getChosenProducts().forEach(product -> System.out.println(product.getProduct().getName()+", "+product.getAmount()+"/"+product.getProduct().getRemaining()));
         System.out.println();
 
 //        productList.getChildren().clear();
@@ -162,7 +156,7 @@ public class ShoppingList {
 //        });
     }
 
-    public void toDispensers() throws IOException {
-        transactionController.toDispensers();
+    public void toDispensers() {
+        transactionController.openDispenserWindow();
     }
 }

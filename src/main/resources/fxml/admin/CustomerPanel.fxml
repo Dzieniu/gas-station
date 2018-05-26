@@ -16,8 +16,8 @@
                   <TextField fx:id="surnameFieldUpdate" layoutX="164.0" layoutY="133.0" prefHeight="31.0" prefWidth="125.0" />
                   <TextField fx:id="cardCodeFieldUpdate" layoutX="168.0" layoutY="174.0" prefHeight="31.0" prefWidth="110.0" />
                   <Label fx:id="idBox" layoutX="164.0" layoutY="38.0" prefHeight="31.0" prefWidth="70.0" />
-                  <Button onAction="#deleteCustomer" layoutX="245.0" layoutY="38.0" mnemonicParsing="false" text="Delete customer" />
-                  <Button onAction="#updateCustomer" layoutX="156.0" layoutY="217.0" mnemonicParsing="false" text="Update customer" />
+                  <Button onAction="#deleteCustomer" layoutX="245.0" layoutY="38.0" mnemonicParsing="false" text="Delete chosenCustomer" />
+                  <Button onAction="#updateCustomer" layoutX="156.0" layoutY="217.0" mnemonicParsing="false" text="Update chosenCustomer" />
                </children>
             </AnchorPane>
          </content>
@@ -32,7 +32,7 @@
                      <TextField fx:id="nameFieldCreate" layoutX="162.0" layoutY="90.0" prefHeight="31.0" prefWidth="122.0" />
                      <TextField fx:id="surnameFieldCreate" layoutX="164.0" layoutY="133.0" prefHeight="31.0" prefWidth="125.0" />
                      <TextField fx:id="cardCodeFieldCreate" layoutX="168.0" layoutY="174.0" prefHeight="31.0" prefWidth="110.0" />
-                  <Button onAction="#createCustomer" layoutX="166.0" layoutY="220.0" mnemonicParsing="false" text="Add customer" />
+                  <Button onAction="#createCustomer" layoutX="166.0" layoutY="220.0" mnemonicParsing="false" text="Add chosenCustomer" />
                  </children>
              </AnchorPane>
          </content>

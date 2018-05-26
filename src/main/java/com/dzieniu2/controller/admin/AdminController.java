@@ -273,7 +273,10 @@ public class AdminController {
         TableColumn<TransactionFuel,String> column2 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(5);
         column2.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
-            simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
+            if(param.getValue().getCustomer()!=null) simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
+            else {
+                simpleStringProperty.setValue("null");
+            }
             return simpleStringProperty;
         });
         TableColumn<TransactionFuel,String> column3 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(6);
@@ -292,7 +295,8 @@ public class AdminController {
         TableColumn<TransactionProduct,String> column5 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(3);
         column5.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
-            simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
+            if(param.getValue().getCustomer()!=null) simpleStringProperty.setValue(param.getValue().getCustomer().getId().toString());
+            else simpleStringProperty.setValue("null");
             return simpleStringProperty;
         });
         TableColumn<TransactionProduct,String> column6 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(4);

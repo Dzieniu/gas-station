@@ -1,109 +1,97 @@
 package com.dzieniu2.controller.employee.transaction;
 
 import com.dzieniu2.controller.employee.*;
-import com.dzieniu2.entity.Customer;
-import com.dzieniu2.other.FuelDispenser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
+import lombok.Data;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Data
 public class TransactionController {
 
     @FXML
-    private BorderPane borderPane;
+    private BorderPane transactionPane;
 
-    private BorderPane productsPane;
+    private BorderPane productPane,dispenserPane, customerPane;
 
-    @FXML
     private EmployeeController employeeController;
 
-    @FXML
-    private Customer customer;
+    private DispenserController dispenserController;
+
+    private ShoppingListController shoppingListControllerController;
+
+    private CustomerController customerController;
+
+    private SummaryController summaryController;
+
+    private ArrayList<ShoppingContainerController> chosenProducts;
 
     @FXML
-    private FuelDispenser fuelDispenser;
+    public void initialize() { }
 
     @FXML
-    private ArrayList<ShoppingContainerController> shoppingCart;
+    public void openProductWindow(){
 
-    @FXML
-    public void initialize() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/ShoppingList.fxml"));
-        productsPane = loader.load();
-        ShoppingList shoppingList = loader.<ShoppingList>getController();
-        shoppingList.setTransactionController(this);
-
-        toProducts();
-        shoppingCart = new ArrayList<>();
+        transactionPane.setCenter(productPane);
     }
 
     @FXML
-    public void toProducts() throws IOException {
+    public void openDispenserWindow() {
 
-        borderPane.setCenter(productsPane);
+        transactionPane.setCenter(dispenserPane);
     }
 
     @FXML
-    public void toDispensers() throws IOException {
+    public void openCustomerWindow() {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/DispenserChooser.fxml"));
-        BorderPane pane = loader.load();
-        DispenserChooserController dispenserChooserController = loader.<DispenserChooserController>getController();
-        dispenserChooserController.addDispensers(employeeController.getDispenserList().getDispensers());
-        dispenserChooserController.setTransactionController(this);
-        borderPane.setCenter(pane);
+        transactionPane.setCenter(customerPane);
     }
 
     @FXML
-    public void toClientCheck() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/ClientChooser.fxml"));
-        BorderPane pane = loader.load();
-        ClientChooserController clientChooserController = loader.<ClientChooserController>getController();
-        clientChooserController.setTransactionController(this);
-        borderPane.setCenter(pane);
-    }
-
-    @FXML
-    public void toSummary() throws IOException {
+    public void openSummaryWindow() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/Summary.fxml"));
         BorderPane pane = loader.load();
-        SummaryController summaryController = loader.<SummaryController>getController();
+        summaryController = loader.getController();
         summaryController.setTransactionController(this);
-        borderPane.setCenter(pane);
+        transactionPane.setCenter(pane);
     }
 
-    public void setEmployeeController(EmployeeController employeeController){
+    public void setEmployeeController(EmployeeController employeeController) throws IOException {
         this.employeeController = employeeController;
+
+        chosenProducts = new ArrayList<>();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/ShoppingList.fxml"));
+        productPane = loader.load();
+        shoppingListControllerController = loader.getController();
+        shoppingListControllerController.setTransactionController(this);
+
+        loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/DispenserChooser.fxml"));
+        dispenserPane = loader.load();
+        dispenserController = loader.getController();
+        dispenserController.setTransactionController(this);
+
+        loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/ClientChooser.fxml"));
+        customerPane = loader.load();
+        customerController = loader.getController();
+        customerController.setTransactionController(this);
+
+        loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/Summary.fxml"));
+        BorderPane pane = loader.load();
+        summaryController = loader.getController();
+        summaryController.setTransactionController(this);
+
+        openProductWindow();
     }
 
     public EmployeeController getEmployeeController() {
         return employeeController;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public FuelDispenser getFuelDispenser() {
-        return fuelDispenser;
-    }
-
-    public void setFuelDispenser(FuelDispenser fuelDispenser) {
-        this.fuelDispenser = fuelDispenser;
-    }
-
-    public ArrayList<ShoppingContainerController> getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ArrayList<ShoppingContainerController> shoppingCart) {
-        this.shoppingCart = shoppingCart;
+    public ArrayList<ShoppingContainerController> getChosenProducts() {
+        return chosenProducts;
     }
 }
