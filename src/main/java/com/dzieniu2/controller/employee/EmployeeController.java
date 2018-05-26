@@ -109,6 +109,10 @@ public class EmployeeController {
 
     public void setMainController(MainController mainController) throws IOException {
         this.mainController = mainController;
+        initTransaction();
+    }
+
+    public void initTransaction() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/transaction/Transaction.fxml"));
         transactionPane = loader.load();

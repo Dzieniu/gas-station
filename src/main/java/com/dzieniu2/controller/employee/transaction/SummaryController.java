@@ -82,7 +82,7 @@ public class SummaryController {
     }
 
     @FXML
-    public void finalizeTransaction(){
+    public void finalizeTransaction() throws IOException {
 
         if(transactionController.getDispenserController().getFuelDispenser()==null &&
                 transactionController.getChosenProducts().isEmpty()){
@@ -128,5 +128,6 @@ public class SummaryController {
         }
 
         transactionController.getEmployeeController().openDefaultWindow();
+        transactionController.getEmployeeController().initTransaction();
     }
 }
