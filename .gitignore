@@ -1,3 +1,6 @@
+#Reports
+*.pdf
+
 # Eclipse
 .classpath
 .project

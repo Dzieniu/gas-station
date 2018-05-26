@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.ClientChooserController">
+   <top>
+      <BorderPane prefHeight="100.0" prefWidth="1420.0" style="-fx-background-color: #4059a9" BorderPane.alignment="CENTER">
+          <center>
+              <Label alignment="CENTER" prefHeight="45.0" prefWidth="274.0" style="-fx-text-fill: white;-fx-font-size: 30" text="3. Verify client" BorderPane.alignment="CENTER" />
+          </center>
+          <left>
+              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toDispensers" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
+                  <BorderPane.margin>
+                      <Insets left="20.0" />
+                  </BorderPane.margin></JFXButton>
+          </left>
+          <right>
+              <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toSummary" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&gt;" BorderPane.alignment="CENTER">
+                  <BorderPane.margin>
+                      <Insets right="20.0" />
+                  </BorderPane.margin></JFXButton>
+          </right>
+      </BorderPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" style="-fx-background-color: white">
+         <children>
+            <Label alignment="CENTER" layoutX="574.0" layoutY="155.0" prefHeight="52.0" prefWidth="272.0" text="Customer's card code:">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+            <TextField fx:id="cardCodeField" layoutX="559.0" layoutY="225.0" prefHeight="46.0" prefWidth="303.0" />
+            <Label fx:id="infoLabel" layoutX="905.0" layoutY="231.0" prefHeight="35.0" prefWidth="352.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <AnchorPane fx:id="customerPane" layoutX="542.0" layoutY="405.0" prefHeight="155.0" prefWidth="337.0" style="-fx-border-color: black">
+               <children>
+                  <Label fx:id="customerNameLabel" alignment="CENTER" layoutX="10.0" layoutY="30.0" prefHeight="32.0" prefWidth="318.0" text="customerName">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="customerRegisterDateLabel" alignment="CENTER" layoutX="12.0" layoutY="93.0" prefHeight="27.0" prefWidth="314.0" text="customerRegisterDate">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <JFXButton fx:id="findButton" buttonType="RAISED" layoutX="654.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#loadCustomer" prefHeight="42.0" prefWidth="113.0" style="-fx-background-color: white" text="Find">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="registerButton" buttonType="RAISED" layoutX="1104.0" layoutY="680.0" mnemonicParsing="false" onMouseClicked="#openRegistrationWindow" prefHeight="57.0" prefWidth="107.0" style="-fx-background-color: white" text="Register">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

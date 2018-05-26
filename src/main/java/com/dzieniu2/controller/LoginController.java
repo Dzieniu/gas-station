@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -28,8 +29,18 @@ public class LoginController {
     @FXML
     private Label infoLabel;
 
+    public void initialize(){
+
+        loginField.setOnKeyPressed(key -> {
+            if (key.getCode().equals(KeyCode.ENTER)) logIn();
+        });
+        passwordField.setOnKeyPressed(key -> {
+            if (key.getCode().equals(KeyCode.ENTER)) logIn();
+        });
+    }
+
     @FXML
-    void logIn() throws IOException {
+    void logIn(){
 
         EmployeeRepository employeeRepository = new EmployeeRepository();
         String login = loginField.getText();
@@ -49,7 +60,11 @@ public class LoginController {
         }
 
         closeWindow();
-        showMainWindow(employee);
+        try {
+            showMainWindow(employee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -70,17 +85,13 @@ public class LoginController {
         );
         Stage stage = new Stage();
         stage.setTitle("gas-station");
-        stage.setScene(new Scene((Pane) loader.load()));
+        stage.setScene(new Scene(loader.load()));
         stage.setMaximized(true);
-        MainController mainController = loader.<MainController>getController();
+        stage.requestFocus();
+        MainController mainController = loader.getController();
         mainController.setEmployee(employee);
 
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                System.exit(0);
-            }
-        });
+        stage.setOnCloseRequest(event -> System.exit(0));
         stage.show();
     }
 

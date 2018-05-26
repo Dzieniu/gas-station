@@ -1,12 +1,12 @@
 package com.dzieniu2.other;
 
-import com.dzieniu2.controller.employee.ProductContainerController;
+import com.dzieniu2.controller.employee.transaction.ShoppingContainerController;
 
 import java.util.ArrayList;
 
 public class ShoppingCart {
 
-    private ArrayList<ProductContainerController> products;
+    private ArrayList<ShoppingContainerController> products;
 
     double totalPrice;
 
@@ -15,7 +15,7 @@ public class ShoppingCart {
         totalPrice = 0.00;
     }
 
-    public void add(ProductContainerController product){
+    public void add(ShoppingContainerController product){
         if(products.contains(product)){
             products.get(products.indexOf(product)).add();
         }else{

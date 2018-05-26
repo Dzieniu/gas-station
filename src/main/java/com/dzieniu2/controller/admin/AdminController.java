@@ -4,7 +4,9 @@ import com.dzieniu2.entity.*;
 import com.dzieniu2.repository.*;
 import com.dzieniu2.service.ReportService;
 import com.itextpdf.text.DocumentException;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,6 +35,7 @@ public class AdminController {
 
     @FXML
     public void initialize(){
+
         adjustTables();
     }
 
@@ -311,6 +314,18 @@ public class AdminController {
             calendarDate.setText("Błąd przy tworzeniu raportu, spróbuj ponownie");
         } catch (DocumentException e) {
             calendarDate.setText("Błąd przy tworzeniu raportu, spróbuj ponownie");
+        }
+    }
+
+    private static final class EmployeeTableObject extends RecursiveTreeObject {
+
+        final StringProperty id, login, password, role;
+
+        public EmployeeTableObject(Employee employee){
+            this.id = new SimpleStringProperty(employee.getId().toString());
+            this.login = new SimpleStringProperty(employee.getLogin());
+            this.password = new SimpleStringProperty(employee.getPassword());
+            this.role = new SimpleStringProperty(employee.getRole().toString());
         }
     }
 }

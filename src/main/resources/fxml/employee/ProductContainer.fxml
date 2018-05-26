@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,17 +23,11 @@
     <bottom>
         <HBox alignment="center" prefHeight="100">
             <children>
-                <JFXButton fx:id="lessButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: #d03c3c;" text="-" textFill="WHITE" />
-                <TextField fx:id="amountField" prefHeight="40.0" prefWidth="60.0">
+                <Label fx:id="remainingLabel" alignment="CENTER" prefHeight="40.0" prefWidth="245.0">
                     <HBox.margin>
                         <Insets left="20.0" />
                     </HBox.margin>
-                </TextField>
-                <JFXButton fx:id="moreButton" buttonType="RAISED" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: #4cb137;" text="+" textFill="WHITE">
-                    <HBox.margin>
-                        <Insets left="20.0" />
-                    </HBox.margin>
-                </JFXButton>
+                </Label>
             </children>
         </HBox>
     </bottom>

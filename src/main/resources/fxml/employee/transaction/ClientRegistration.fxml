@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800" prefWidth="1420.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.ClientRegistrationController">
+        <JFXTextField fx:id="customerFirstNameField" layoutX="581.0" layoutY="200.0" prefHeight="41.0" prefWidth="260.0" promptText="name">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+        </JFXTextField>
+        <JFXTextField fx:id="customerLastNameField" layoutX="580.0" layoutY="265.0" prefHeight="41.0" prefWidth="260.0" promptText="surname">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <GridPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+        </JFXTextField>
+        <Label layoutX="664.0" layoutY="335.0" text="card code:">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+            <font>
+                <Font name="HelveticaLTStd-Light" size="18.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="addCustomerButton" buttonType="RAISED" layoutX="647.0" layoutY="460.0" mnemonicParsing="false" onAction="#addCustomer" prefHeight="69.0" prefWidth="126.0" ripplerFill="#4059a9" style="-fx-background-color: white" text="add client"/>
+        <JFXButton fx:id="GenButton" buttonType="RAISED" layoutX="594.0" layoutY="385.0" mnemonicParsing="false" onAction="#generateUID" prefHeight="48.0" prefWidth="233.0" ripplerFill="#4059a9" style="-fx-background-color: white" text="generate" />
+        <JFXButton fx:id="returnButton" buttonType="RAISED" layoutX="178.0" layoutY="680.0" mnemonicParsing="false" onMouseClicked="#backToCustomer" prefHeight="50.0" prefWidth="87.0" style="-fx-background-color: white" text="&lt;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+        <Label fx:id="infoLabel" layoutX="260.0" layoutY="600.0" prefHeight="47.0" prefWidth="900" alignment="CENTER">
+            <font>
+                <Font name="HelveticaLTStd-Blk" size="32.0" />
+            </font>
+        </Label>
+</AnchorPane>

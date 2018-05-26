@@ -1,6 +1,8 @@
 package com.dzieniu2.controller;
 
+import com.dzieniu2.controller.employee.EmployeeController;
 import com.dzieniu2.entity.Employee;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,12 +20,17 @@ public class MainController {
     private BorderPane mainBorderPane;
 
     @FXML
-    private Label statusBar;
+    private Label loggedUser;
+
+    @FXML
+    private JFXButton logoutButton;
 
     private Employee employee;
 
     @FXML
     public void initialize(){
+        logoutButton.setStyle("-fx-background-image: url(/images/logout-icon.png);-fx-background-size: 30 30");
+        logoutButton.setDisableVisualFocus(true);
     }
 
     @FXML
@@ -48,16 +55,23 @@ public class MainController {
         setWindow();
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
     public void setWindow() throws IOException {
-        statusBar.setText("Logged as: "+ employee.getLogin()+" ("+ employee.getRole().toString()+")");
+        loggedUser.setText("Logged as: "+ employee.getLogin()+" ("+ employee.getRole().toString()+")");
         switch (employee.getRole()){
             case ADMIN:
                 BorderPane pane1 = FXMLLoader.load(getClass().getResource("/fxml/admin/AdminPanel.fxml"));
                 mainBorderPane.setCenter(pane1);
                 break;
             case EMPLOYEE:
-                BorderPane pane2 = FXMLLoader.load(getClass().getResource("/fxml/employee/EmployeePanel.fxml"));
-                mainBorderPane.setCenter(pane2);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/employee/EmployeePanel.fxml"));
+                BorderPane pane = loader.load();
+                EmployeeController employeeController = loader.getController();
+                employeeController.setMainController(this);
+                mainBorderPane.setCenter(pane);
                 break;
         }
     }

@@ -1,8 +1,10 @@
 package com.dzieniu2.repository;
 
 import com.dzieniu2.entity.Customer;
+import com.dzieniu2.entity.Employee;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -12,6 +14,15 @@ public class CustomerRepository {
 
     public Customer findById(Long id) {
         return em.find(Customer.class, id);
+    }
+
+    public Customer findByCardCode(String cardCode) {
+        Query query = em.createQuery("FROM Customer C WHERE C.cardCode = '"+cardCode+"'");
+        try{
+            return (Customer) query.getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
     }
 
     public List<Customer> findAll(){

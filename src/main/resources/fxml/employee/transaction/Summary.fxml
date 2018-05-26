@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="1000.0" prefWidth="1420.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.employee.transaction.SummaryController">
+    <top>
+        <BorderPane prefHeight="100.0" prefWidth="1420.0" style="-fx-background-color: #4059a9" BorderPane.alignment="CENTER">
+            <center>
+                <Label alignment="CENTER" prefHeight="45.0" prefWidth="274.0" style="-fx-text-fill: white;-fx-font-size: 30" text="4. Summary" BorderPane.alignment="CENTER" />
+            </center>
+            <left>
+                <JFXButton buttonType="RAISED" mnemonicParsing="false" onMouseClicked="#toClientCheck" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets left="20.0" />
+                    </BorderPane.margin></JFXButton>
+            </left>
+            <right>
+                <JFXButton buttonType="RAISED" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: white" text="&lt;" visible="false" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets left="20.0" />
+                    </BorderPane.margin></JFXButton>
+            </right>
+        </BorderPane>
+    </top>
+    <center>
+        <AnchorPane fx:id="centerPane" prefHeight="800.0" prefWidth="474.0" style="-fx-background-color: white;-fx-border-color: grey" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="customerInfoLabel" alignment="CENTER" layoutX="39.0" layoutY="656.0" prefHeight="40.0" prefWidth="400.0" text="Customer not registered">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <AnchorPane fx:id="customerPane" layoutX="23.0" layoutY="97.0" prefHeight="472.0" prefWidth="431.0">
+                    <children>
+                        <Label fx:id="customerNameLabel" alignment="CENTER" layoutX="57.0" layoutY="204.0" prefHeight="32.0" prefWidth="318.0" text="customerName">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="customerRegisterDateLabel" alignment="CENTER" layoutX="62.0" layoutY="299.0" prefHeight="27.0" prefWidth="314.0" text="customerRegisterDate">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                  <Label layoutX="151.0" layoutY="167.0" text="Customer name:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="110.0" layoutY="251.0" text="Customer registration date:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                    </children>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+   <left>
+      <BorderPane style="-fx-border-color: grey">
+          <top>
+              <AnchorPane prefHeight="150" prefWidth="427.0" style="-fx-background-color: white">
+               <children>
+                  <Label fx:id="chosenProductsLabel" layoutX="169.0" layoutY="62.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+          </top>
+          <center>
+              <JFXListView fx:id="productList" prefHeight="500.0" prefWidth="424.0" style="-fx-background-color: white" BorderPane.alignment="CENTER" />
+          </center>
+          <bottom>
+              <AnchorPane prefHeight="150.0" style="-fx-background-color: white">
+               <children>
+                  <Label fx:id="productsInfoLabel" alignment="CENTER" layoutX="37.0" layoutY="67.0" prefHeight="40.0" prefWidth="400.0" text="No products chosen">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+          </bottom>
+      </BorderPane>
+   </left>
+    <right>
+        <AnchorPane prefHeight="800.0" prefWidth="473.0" style="-fx-background-color: white;-fx-border-color: grey">
+            <AnchorPane fx:id="dispenserPane" layoutX="35.0" layoutY="52.0" prefHeight="562.0" prefWidth="403.0" style="-fx-background-color: white">
+                <children>
+                    <Label fx:id="nameHlabel" alignment="CENTER" layoutX="114.0" layoutY="50.0" prefHeight="45.0" prefWidth="176.0" text="Dispenser">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="nameLabel" alignment="CENTER" layoutX="72.0" layoutY="95.0" prefHeight="33.0" prefWidth="261.0" text="nameLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="litersHlabel" layoutX="14.0" layoutY="192.0" prefHeight="29.0" prefWidth="93.0" text="Liters">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="costHlabel" layoutX="14.0" layoutY="269.0" prefHeight="24.0" prefWidth="58.0" text="Cost">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="litersLabel" alignment="CENTER" layoutX="111.0" layoutY="192.0" prefHeight="30.0" prefWidth="182.0" text="litersLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="costLabel" alignment="CENTER" layoutX="108.0" layoutY="267.0" prefHeight="31.0" prefWidth="188.0" text="costLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="priceHlabel" layoutX="15.0" layoutY="338.0" prefHeight="31.0" prefWidth="64.0" text="Price">
+                        <font>
+                            <Font size="17.0" />
+                        </font></Label>
+                    <Label fx:id="priceLabel" alignment="CENTER" layoutX="120.0" layoutY="339.0" prefHeight="30.0" prefWidth="164.0" text="priceLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="fuelLeftHlabel" layoutX="21.0" layoutY="445.0" prefHeight="31.0" prefWidth="103.0" text="Fuel left">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="fuelLeftLabel" alignment="CENTER" layoutX="133.0" layoutY="443.0" prefHeight="35.0" prefWidth="138.0" text="fuelLeftLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                    <Label fx:id="percentLeftLabel" alignment="CENTER" layoutX="93.0" layoutY="496.0" prefHeight="32.0" prefWidth="218.0" text="percentLeftLabel">
+                        <font>
+                            <Font size="18.0" />
+                        </font></Label>
+                </children>
+                <cursor>
+                    <Cursor fx:constant="DEFAULT" />
+                </cursor>
+            </AnchorPane>
+         <Label fx:id="dispenserInfoLabel" alignment="CENTER" layoutX="37.0" layoutY="649.0" prefHeight="40.0" prefWidth="400.0" text="No dispenser chosen">
+            <font>
+               <Font size="18.0" />
+            </font></Label>
+        </AnchorPane>
+    </right>
+    <bottom>
+        <AnchorPane prefHeight="100.0" prefWidth="1420.0" style="-fx-background-color: white">
+         <children>
+            <JFXButton fx:id="finalizeButton" onMouseClicked="#finalizeTransaction" buttonType="RAISED" layoutX="1110.0" layoutY="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="144.0" style="-fx-background-color: white" text="Finalize" />
+            <Label layoutX="64.0" layoutY="38.0" text="Current date:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentDateLabel" layoutX="211.0" layoutY="38.0" text="currentDateLabel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="488.0" layoutY="38.0" text="Total transaction cost:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalCostLabel" layoutX="710.0" layoutY="38.0" text="totalCostLabel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+    </bottom>
+</BorderPane>

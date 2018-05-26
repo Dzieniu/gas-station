@@ -36,9 +36,11 @@ public class Main extends Application
     public static void main(String[] args)
     {
         launch(args);
+
     }
 
     public void loadData() throws IOException {
+
         ContainerRepository cr = new ContainerRepository();
         Container co1 = new Container();
         co1.setMaxCapacity(20000l);
@@ -79,12 +81,22 @@ public class Main extends Application
         f4.setContainer(co4);
         fr.add(f4);
 
+        co1.setFuel(f1);
+        co2.setFuel(f2);
+        co3.setFuel(f3);
+        co4.setFuel(f4);
+        cr.update(co1);
+        cr.update(co2);
+        cr.update(co3);
+        cr.update(co4);
+
         EmployeeRepository er = new EmployeeRepository();
         Employee e1 = new Employee();
         e1.setLogin("admin");
         e1.setPassword("");
         e1.setRole(Role.ADMIN);
         er.add(e1);
+
         Employee e2 = new Employee();
         e2.setLogin("employee");
         e2.setPassword("");
@@ -194,21 +206,21 @@ public class Main extends Application
         p12.setImage(getImage("lays.png"));
         pr.add(p12);
         Product p13 = new Product();
-        p13.setCategory(ProductCategory.FOOD);
+        p13.setCategory(ProductCategory.DRINK);
         p13.setName("Kawa");
         p13.setPrice(7.00);
         p13.setRemaining(25);
         p13.setImage(getImage("kawa.png"));
         pr.add(p13);
         Product p14 = new Product();
-        p14.setCategory(ProductCategory.FOOD);
+        p14.setCategory(ProductCategory.DRINK);
         p14.setName("Woda");
         p14.setPrice(7.00);
         p14.setRemaining(25);
         p14.setImage(getImage("woda.jpg"));
         pr.add(p14);
         Product p15 = new Product();
-        p15.setCategory(ProductCategory.FOOD);
+        p15.setCategory(ProductCategory.DRINK);
         p15.setName("Coca-cola");
         p15.setPrice(7.00);
         p15.setRemaining(25);

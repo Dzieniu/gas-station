@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,285 +13,303 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="mainBorderPane" prefWidth="1920" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.admin.AdminController">
-   <center>
-      <TabPane fx:id="tableTabPane" style="-fx-tab-min-height: 60;-fx-tab-min-width: 250" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab onSelectionChanged="#switchTab" text="Employees">
-               <content>
-                  <TableView fx:id="employeesTable" prefHeight="200.0" prefWidth="1000.0" style="-fx-font-size: 20">
-                    <columns>
-                       <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                           <cellValueFactory>
-                               <PropertyValueFactory property="id" />
-                           </cellValueFactory>
-                       </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="login">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="login" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="password">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="password" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="role">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="role" />
-                            </cellValueFactory>
-                        </TableColumn>
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </content>
-          </Tab>
-          <Tab onSelectionChanged="#switchTab" text="Customers">
-            <content>
-            </content>
-               <content>
-                  <TableView fx:id="customersTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                    <columns>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="id" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="name" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="surname">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="surname" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="card code">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="cardCode" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn style="-fx-alignment: CENTER" text="register date">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="registerDate" />
-                            </cellValueFactory>
-                        </TableColumn>
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </content>
-          </Tab>
-            <Tab onSelectionChanged="#switchTab" text="Products">
-                <content>
-                </content>
-                <content>
-                    <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                        <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="category">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="category" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="name" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="remaining">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="remaining" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="price">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="price" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                    </TableView>
-                </content>
-            </Tab>
-            <Tab onSelectionChanged="#switchTab" text="Containers">
-                <content>
-                </content>
-                <content>
-                    <TableView fx:id="containersTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                        <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuelLeft">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="fuelLeft" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="maxCapacity">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="maxCapacity" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="fuel" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                    </TableView>
-                </content>
-            </Tab>
-            <Tab onSelectionChanged="#switchTab" text="Fuels">
-                <content>
-                </content>
-                <content>
-                    <TableView fx:id="fuelsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                        <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="name" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="price">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="price" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                    </TableView>
-                </content>
-            </Tab>
-            <Tab onSelectionChanged="#switchTab" text="Fuel transactions">
-                <content>
-                </content>
-                <content>
-                    <TableView fx:id="fuelTransactionsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                        <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel price">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="fuelPrice" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel quantity">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="fuelQuantity" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="total price">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="totalPrice" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="date">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="transactionDate" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="customer id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="customer" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="employee id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="employee" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="fuel" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                    </TableView>
-                </content>
-            </Tab>
-            <Tab onSelectionChanged="#switchTab" text="Product transactions">
-                <content>
-                </content>
-                <content>
-                    <TableView fx:id="productTransactionsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
-                        <columns>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="id" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="products price">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="productsPrice" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="transaction date">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="transactionDate" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="customer id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="customer" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="employee id">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="employee" />
-                                </cellValueFactory>
-                            </TableColumn>
-                        </columns>
-                        <columnResizePolicy>
-                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                        </columnResizePolicy>
-                    </TableView>
-                </content>
-            </Tab>
-            <Tab text="Reports">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="calendarDate" layoutX="955.0" layoutY="163.0" text="" />
-                        <DatePicker fx:id="datePicker" layoutX="873.0" layoutY="88.0" />
-                        <Label layoutX="896.0" layoutY="42.0" text="Wybierz miesiąc raportu" />
-                        <Button onAction="#showDate" id="datePickBtn" layoutX="935.0" layoutY="130.0" mnemonicParsing="false" text="Wybierz" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </TabPane>
-   </center>
+<BorderPane fx:id="mainBorderPane" prefWidth="1920" stylesheets="@../../css/TabPane2.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dzieniu2.controller.admin.AdminController">
+   <top>
+       <TabPane style="-fx-tab-min-height: 60;-fx-tab-min-width: 250" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+           <tabs>
+               <Tab text="Database">
+                   <content>
+                       <JFXTabPane fx:id="tableTabPane" prefWidth="1920.0" style="-fx-tab-min-height: 60;-fx-tab-min-width: 250;-fx-background-color: #4286f4" stylesheets="@../../css/TabPane.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                           <tabs>
+                               <Tab onSelectionChanged="#switchTab" text="Employees">
+                                   <content>
+                                       <TableView fx:id="employeesTable" prefHeight="800" prefWidth="1000.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="login">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="login" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="password">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="password" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="role">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="role" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Customers">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="customersTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="name" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="surname">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="surname" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="card code">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="cardCode" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn style="-fx-alignment: CENTER" text="register date">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="registerDate" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Products">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="category">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="category" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="name" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="remaining">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="remaining" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="price">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="price" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Containers">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="containersTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuelLeft">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="fuelLeft" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="maxCapacity">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="maxCapacity" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="fuel" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Fuels">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="fuelsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="name">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="name" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="price">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="price" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Fuel transactions">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="fuelTransactionsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel price">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="fuelPrice" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel quantity">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="fuelQuantity" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="total price">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="totalPrice" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="date">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="transactionDate" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="customer id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="customer" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="employee id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="employee" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="fuel id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="fuel" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                               <Tab onSelectionChanged="#switchTab" text="Product transactions">
+                                   <content>
+                                   </content>
+                                   <content>
+                                       <TableView fx:id="productTransactionsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 20">
+                                           <columns>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="id" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="products price">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="productsPrice" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="transaction date">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="transactionDate" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="customer id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="customer" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                               <TableColumn prefWidth="75.0" style="-fx-alignment: CENTER" text="employee id">
+                                                   <cellValueFactory>
+                                                       <PropertyValueFactory property="employee" />
+                                                   </cellValueFactory>
+                                               </TableColumn>
+                                           </columns>
+                                           <columnResizePolicy>
+                                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                           </columnResizePolicy>
+                                       </TableView>
+                                   </content>
+                               </Tab>
+                           </tabs>
+                           <BorderPane.margin>
+                               <Insets />
+                           </BorderPane.margin>
+                       </JFXTabPane>
+                   </content>
+               </Tab>
+               <Tab text="Fuels">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   </content>
+               </Tab>
+               <Tab text="Products">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   </content>
+               </Tab>
+               <Tab text="Reports">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                               <Label fx:id="calendarDate" layoutX="955.0" layoutY="163.0" text="" />
+                               <DatePicker fx:id="datePicker" layoutX="873.0" layoutY="88.0" />
+                               <Label layoutX="896.0" layoutY="42.0" text="Wybierz miesiąc raportu" />
+                               <Button id="datePickBtn" layoutX="935.0" layoutY="130.0" mnemonicParsing="false" onAction="#showDate" text="Wybierz" />
+                           </children>
+                       </AnchorPane>
+                   </content>
+               </Tab>
+           </tabs>
+       </TabPane>
+   </top>
 </BorderPane>
