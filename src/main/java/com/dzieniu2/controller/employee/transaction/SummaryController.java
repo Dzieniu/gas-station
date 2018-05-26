@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 public class SummaryController {
 

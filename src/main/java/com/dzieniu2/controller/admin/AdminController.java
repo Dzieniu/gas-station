@@ -295,6 +295,13 @@ public class AdminController {
             }
             return simpleStringProperty;
         });
+
+        TableColumn<TransactionFuel,String> columnEasterEgg1 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(4);
+        columnEasterEgg1.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(DateConverterService.formatDate(param.getValue().getCustomer().getRegisterDate()));
+            return simpleStringProperty;
+        });
         TableColumn<TransactionFuel,String> column3 = (TableColumn<TransactionFuel, String>) fuelTransactionsTable.getColumns().get(6);
         column3.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
@@ -308,6 +315,12 @@ public class AdminController {
             return simpleStringProperty;
         });
 
+        TableColumn<TransactionProduct,String> columnEasterEgg2 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(2);
+        columnEasterEgg2.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(DateConverterService.formatDate(param.getValue().getCustomer().getRegisterDate()));
+            return simpleStringProperty;
+        });
         TableColumn<TransactionProduct,String> column5 = (TableColumn<TransactionProduct, String>) productTransactionsTable.getColumns().get(3);
         column5.setCellValueFactory(param -> {
             SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
