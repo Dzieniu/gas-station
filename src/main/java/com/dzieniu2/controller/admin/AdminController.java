@@ -146,7 +146,10 @@ public class AdminController {
             case 0:
                 EmployeeRepository employeeRepository = new EmployeeRepository();
                 List<Employee> employees = employeeRepository.findAll();
-                employeesTable.getItems().addAll(employees);
+                List<SimpleEmployee> simpleEmployees = employees.stream()
+                        .map(x -> new SimpleEmployee(x.getId(), x.getLogin(), generatePassword(x.getPassword()), x.getRole().toString()))
+                        .collect(Collectors.toList());
+                employeesTable.getItems().addAll(simpleEmployees);
                 break;
             case 1:
                 CustomerRepository customerRepository = new CustomerRepository();
@@ -208,7 +211,9 @@ public class AdminController {
 
         employeesTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                Employee employee = (Employee) employeesTable.getSelectionModel().getSelectedItem();
+                EmployeeRepository employeeRepository = new EmployeeRepository();
+                SimpleEmployee simpleEmployee = (SimpleEmployee) employeesTable.getSelectionModel().getSelectedItem();
+                Employee employee = employeeRepository.findById(simpleEmployee.getId());
                 try {
                     showEmployeeWindow(employee);
                 } catch (IOException e) {
@@ -348,5 +353,25 @@ public class AdminController {
         private String surname;
         private String cardCode;
         private String registerDate;
+    }
+
+    @AllArgsConstructor
+    @Data
+    public class SimpleEmployee {
+        private Long id;
+        private String login;
+        private String password;
+        private String role;
+    }
+
+    private String generatePassword(String password) {
+        return password.length() > 0 ? generateHash(password) : "*****";
+    }
+
+    private String generateHash(String text) {
+        String hash = "";
+        for (int i = 0; i < text.length(); i++)
+            hash += "*";
+        return hash;
     }
 }
