@@ -146,19 +146,12 @@ public class AdminController {
             case 0:
                 EmployeeRepository employeeRepository = new EmployeeRepository();
                 List<Employee> employees = employeeRepository.findAll();
-                List<SimpleEmployee> simpleEmployees = employees.stream()
-                        .map(x -> new SimpleEmployee(x.getId(), x.getLogin(), generatePassword(x.getPassword()), x.getRole().toString()))
-                        .collect(Collectors.toList());
-                employeesTable.getItems().addAll(simpleEmployees);
+                employeesTable.getItems().addAll(employees);
                 break;
             case 1:
                 CustomerRepository customerRepository = new CustomerRepository();
                 List<Customer> customers = customerRepository.findAll();
-                List<SimpleCustomer> simpleCustomers = customers.stream()
-                        .map(x -> new SimpleCustomer(x.getId(), x.getName(), x.getSurname(), x.getCardCode(), DateConverterService.formatDate(x.getRegisterDate())))
-                        .collect(Collectors.toList());
-
-                customersTable.getItems().addAll(simpleCustomers);
+                customersTable.getItems().addAll(customers);
                 break;
             case 2:
                 ProductRepository productRepository = new ProductRepository();
@@ -211,9 +204,7 @@ public class AdminController {
 
         employeesTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                EmployeeRepository employeeRepository = new EmployeeRepository();
-                SimpleEmployee simpleEmployee = (SimpleEmployee) employeesTable.getSelectionModel().getSelectedItem();
-                Employee employee = employeeRepository.findById(simpleEmployee.getId());
+                Employee employee = (Employee) employeesTable.getSelectionModel().getSelectedItem();
                 try {
                     showEmployeeWindow(employee);
                 } catch (IOException e) {
@@ -224,9 +215,7 @@ public class AdminController {
 
         customersTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-                CustomerRepository customerRepository = new CustomerRepository();
-                SimpleCustomer simpleCustomer = (SimpleCustomer) customersTable.getSelectionModel().getSelectedItem();
-                Customer customer = customerRepository.findById(simpleCustomer.getId());
+                Customer customer = (Customer) customersTable.getSelectionModel().getSelectedItem();
                 try {
                     showCustomerWindow(customer);
                 } catch (IOException e) {
@@ -334,6 +323,20 @@ public class AdminController {
             simpleStringProperty.setValue(param.getValue().getEmployee().getId().toString());
             return simpleStringProperty;
         });
+
+        TableColumn<Customer, String> customerRegisterDate = (TableColumn<Customer, String>) customersTable.getColumns().get(4);
+        customerRegisterDate.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(DateConverterService.formatDate(param.getValue().getRegisterDate()));
+            return simpleStringProperty;
+        });
+
+        TableColumn<Employee, String> employeePassword = (TableColumn<Employee, String>) employeesTable.getColumns().get(2);
+        employeePassword.setCellValueFactory(param -> {
+            SimpleStringProperty simpleStringProperty = new SimpleStringProperty();
+            simpleStringProperty.setValue(generatePassword(param.getValue().getPassword()));
+            return simpleStringProperty;
+        });
     }
 
     @FXML
@@ -360,25 +363,6 @@ public class AdminController {
             this.password = new SimpleStringProperty(employee.getPassword());
             this.role = new SimpleStringProperty(employee.getRole().toString());
         }
-    }
-
-    @AllArgsConstructor
-    @Data
-    public class SimpleCustomer {
-        private Long id;
-        private String name;
-        private String surname;
-        private String cardCode;
-        private String registerDate;
-    }
-
-    @AllArgsConstructor
-    @Data
-    public class SimpleEmployee {
-        private Long id;
-        private String login;
-        private String password;
-        private String role;
     }
 
     private String generatePassword(String password) {
