@@ -46,6 +46,10 @@
                             <font>
                                 <Font size="18.0" />
                             </font></Label>
+                        <Label fx:id="customerPoints" alignment="CENTER" layoutX="62.0" layoutY="350" prefHeight="27.0" prefWidth="314.0" text="customerRegisterDate">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
                   <Label layoutX="151.0" layoutY="167.0" text="Customer name:">
                      <font>
                         <Font size="18.0" />

@@ -25,7 +25,7 @@ public class SummaryController {
 
     @FXML
     private Label nameLabel,litersLabel,costLabel,priceLabel,fuelLeftLabel,percentLeftLabel,customerNameLabel, customerRegisterDateLabel,
-        dispenserInfoLabel,customerInfoLabel,productsInfoLabel,chosenProductsLabel,currentDateLabel,totalCostLabel,discountInfoLabel;
+        dispenserInfoLabel,customerInfoLabel,productsInfoLabel,chosenProductsLabel,currentDateLabel,totalCostLabel,discountInfoLabel, customerPoints;
 
     private TransactionController transactionController;
     private double fuelDiscount = 1.0;
@@ -73,6 +73,9 @@ public class SummaryController {
             customerPane.setVisible(true);
             customerNameLabel.setText(transactionController.getCustomerController().getCustomer().getName()+" "+transactionController.getCustomerController().getCustomer().getSurname());
             customerRegisterDateLabel.setText(DateConverterService.formatDate(transactionController.getCustomerController().getCustomer().getRegisterDate()));
+            int index = transactionController.getCustomerController().getCustomer().getPoints().toString().indexOf('.');
+            String displayedPoints = transactionController.getCustomerController().getCustomer().getPoints().toString().substring(0, index+2);
+            customerPoints.setText("Points: " + displayedPoints);
             customerInfoLabel.setText("");
         }
         if(!transactionController.getChosenProducts().isEmpty()){
@@ -146,12 +149,13 @@ public class SummaryController {
 
     private void addCustomerPoints(Customer customer) {
         CustomerRepository cr = new CustomerRepository();
-        System.out.println(customer);
         if (customer != null) {
-            double points = totalCost / 2;
-            points += customer.getPoints();
-            customer.setPoints(points);
-            System.out.println(customer);
+            double sumPoints = 0.0;
+            for (int i = 0; i < totalCost; i++) {
+                sumPoints += 0.5;
+            }
+            sumPoints += customer.getPoints();
+            customer.setPoints(sumPoints);
             cr.update(customer);
         }
     }
