@@ -108,6 +108,7 @@ public class Main extends Application
         cu.setCardCode("#5555");
         cu.setName("Mieczysław");
         cu.setSurname("Łopata");
+        cu.setPoints(2000d);
         cur.add(cu);
         Customer cu2 = new Customer();
         cu2.setCardCode("#6666");

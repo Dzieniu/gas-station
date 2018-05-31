@@ -27,6 +27,9 @@ public class Customer {
     @Column(name = "card_code")
     private String cardCode;
 
+    @Column
+    private Double points;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private Set<TransactionFuel> transactionFuel = new HashSet(0);
 
@@ -36,5 +39,6 @@ public class Customer {
     @PrePersist
     private void setDefaultRegisterDate() {
         this.registerDate = new Date();
+        this.points = 0.0d;
     }
 }

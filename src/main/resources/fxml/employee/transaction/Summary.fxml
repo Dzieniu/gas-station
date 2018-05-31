@@ -144,6 +144,10 @@
                     <Cursor fx:constant="DEFAULT" />
                 </cursor>
             </AnchorPane>
+            <Label fx:id="discountInfoLabel" alignment="CENTER" layoutX="37.0" layoutY="600.0" prefHeight="40.0" prefWidth="400.0" text="">
+                <font>
+                    <Font size="18.0" />
+                </font></Label>
          <Label fx:id="dispenserInfoLabel" alignment="CENTER" layoutX="37.0" layoutY="649.0" prefHeight="40.0" prefWidth="400.0" text="No dispenser chosen">
             <font>
                <Font size="18.0" />

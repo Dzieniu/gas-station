@@ -56,7 +56,6 @@ public class AdminController {
         stage.setScene(new Scene(loader.load()));
         EmployeeController employeeController = loader.<EmployeeController>getController();
         employeeController.setAdminController(this);
-        employeeController.setSelectedEmployee(employee);
         stage.show();
     }
 

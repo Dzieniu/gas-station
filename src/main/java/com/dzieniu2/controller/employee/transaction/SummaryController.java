@@ -1,7 +1,9 @@
 package com.dzieniu2.controller.employee.transaction;
 
+import com.dzieniu2.entity.Customer;
 import com.dzieniu2.entity.TransactionFuel;
 import com.dzieniu2.entity.TransactionProduct;
+import com.dzieniu2.repository.CustomerRepository;
 import com.dzieniu2.repository.FuelTransactionRepository;
 import com.dzieniu2.repository.ProductRepository;
 import com.dzieniu2.repository.ProductTransactionRepository;
@@ -23,9 +25,12 @@ public class SummaryController {
 
     @FXML
     private Label nameLabel,litersLabel,costLabel,priceLabel,fuelLeftLabel,percentLeftLabel,customerNameLabel, customerRegisterDateLabel,
-        dispenserInfoLabel,customerInfoLabel,productsInfoLabel,chosenProductsLabel,currentDateLabel,totalCostLabel;
+        dispenserInfoLabel,customerInfoLabel,productsInfoLabel,chosenProductsLabel,currentDateLabel,totalCostLabel,discountInfoLabel;
 
     private TransactionController transactionController;
+    private double fuelDiscount = 1.0;
+    private double totalCost = 0.0;
+
 
     @FXML
     public void initialize(){
@@ -45,7 +50,7 @@ public class SummaryController {
     }
 
     public void refreshData(){
-        double totalCost = 0.0;
+
         if(transactionController.getDispenserController().getFuelDispenser()!=null){
             dispenserPane.setVisible(true);
             nameLabel.setText(transactionController.getDispenserController().getFuelDispenser().getContainer().getId()+" - "+transactionController.getDispenserController().getFuelDispenser().getContainer().getFuel().getName());
@@ -54,13 +59,20 @@ public class SummaryController {
             priceLabel.setText(transactionController.getDispenserController().getFuelDispenser().getContainer().getFuel().getPrice()+"PLN/dm³");
             fuelLeftLabel.setText(transactionController.getDispenserController().getFuelDispenser().getContainer().getFuelLeft()+"dm³");
             percentLeftLabel.setText("( "+(Math.round((transactionController.getDispenserController().getFuelDispenser().getContainer().getFuelLeft()/transactionController.getDispenserController().getFuelDispenser().getContainer().getMaxCapacity())*Math.pow(10, 2))/Math.pow(10, 2))+"% )");
-            dispenserInfoLabel.setText("Fuel cost: "+(Math.round(transactionController.getDispenserController().getFuelDispenser().getCost()*Math.pow(10, 2))/Math.pow(10, 2))+" PLN");
-            totalCost += transactionController.getDispenserController().getFuelDispenser().getCost();
+            if (transactionController.getCustomerController().getCustomer() != null)
+                fuelDiscount = calculateDiscount(transactionController.getCustomerController().getCustomer());
+
+            String displayedDiscount = String.valueOf(Math.round((1.0 - fuelDiscount)*Math.pow(10,2)*100)/Math.pow(10,2));
+            int index = displayedDiscount.indexOf('.');
+            displayedDiscount = displayedDiscount.substring(0,index);
+            discountInfoLabel.setText("Discount: " + displayedDiscount + " %");
+            dispenserInfoLabel.setText("Fuel cost: "+(Math.round(transactionController.getDispenserController().getFuelDispenser().getCost()*fuelDiscount*Math.pow(10, 2))/Math.pow(10, 2))+" PLN");
+            totalCost += transactionController.getDispenserController().getFuelDispenser().getCost()*fuelDiscount;
         }
         if(transactionController.getCustomerController().getCustomer()!=null){
             customerPane.setVisible(true);
             customerNameLabel.setText(transactionController.getCustomerController().getCustomer().getName()+" "+transactionController.getCustomerController().getCustomer().getSurname());
-            customerRegisterDateLabel.setText(transactionController.getCustomerController().getCustomer().getRegisterDate().toString());
+            customerRegisterDateLabel.setText(DateConverterService.formatDate(transactionController.getCustomerController().getCustomer().getRegisterDate()));
             customerInfoLabel.setText("");
         }
         if(!transactionController.getChosenProducts().isEmpty()){
@@ -126,7 +138,32 @@ public class SummaryController {
             transactionController.getChosenProducts().clear();
         }
 
+
+        addCustomerPoints(transactionController.getCustomerController().getCustomer());
         transactionController.getEmployeeController().openDefaultWindow();
         transactionController.getEmployeeController().initTransaction();
+    }
+
+    private void addCustomerPoints(Customer customer) {
+        CustomerRepository cr = new CustomerRepository();
+        System.out.println(customer);
+        if (customer != null) {
+            double points = totalCost / 2;
+            points += customer.getPoints();
+            customer.setPoints(points);
+            System.out.println(customer);
+            cr.update(customer);
+        }
+    }
+
+    private double calculateDiscount(Customer customer) {
+        if (customer.getPoints() >= 1000 && customer.getPoints() < 2000)
+            return 0.95;
+        else if (customer.getPoints() >= 2000 && customer.getPoints() < 3500)
+            return 0.90;
+        else if (customer.getPoints() >= 3500)
+            return 0.85;
+
+        return 1.0;
     }
 }
