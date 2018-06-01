@@ -88,14 +88,15 @@ public class ReportService {
     private void addFuelRows(PdfPTable table, List<TransactionFuel> transactionFuel) {
         getSoldFuel(transactionFuel).forEach((k, v) -> {
             table.addCell(v.fuelType);
-            table.addCell(v.quantity.toString());
-            table.addCell(v.sumPrice.toString());
+            table.addCell(doubleToString(v.quantity));
+            table.addCell(doubleToString(v.sumPrice));
         });
 
         table.addCell("");
         table.addCell("Suma");
+
         Double sum = getSoldFuel(transactionFuel).entrySet().stream().mapToDouble(i -> i.getValue().sumPrice.doubleValue()).sum()*100.00/100.0;
-        table.addCell(String.valueOf(sum));
+        table.addCell(doubleToString(sum));
     }
 
     private Map<String, SoldFuel> getSoldFuel(List<TransactionFuel> transactionFuel) {
@@ -120,13 +121,13 @@ public class ReportService {
         getSoldProducts(transactionProducts).forEach((k, v) -> {
             table.addCell(v.name);
             table.addCell(v.quantity.toString());
-            table.addCell(v.sumPrice.toString());
+            table.addCell(doubleToString(v.sumPrice));
         });
 
         table.addCell("");
         table.addCell("Suma");
         Double sum = getSoldProducts(transactionProducts).entrySet().stream().mapToDouble(i -> i.getValue().sumPrice.doubleValue()).sum()*100.00/100.0;
-        table.addCell(String.valueOf(sum));
+        table.addCell(doubleToString(sum));
     }
 
     private Map<String, SoldProducts> getSoldProducts(List<TransactionProduct> transactionProducts) {
@@ -148,6 +149,13 @@ public class ReportService {
 
     private List<String> getProductTypes() {
         return productRepository.findAll().stream().map(x -> x.getName()).collect(Collectors.toList());
+    }
+
+    private String doubleToString(Double value) {
+        String str = String.valueOf(value);
+        int index = str.indexOf('.');
+        str = str.substring(0, index+2);
+        return str;
     }
 
     @ToString
