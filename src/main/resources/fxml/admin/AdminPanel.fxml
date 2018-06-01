@@ -301,7 +301,7 @@
                    <content>
                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                               <Label fx:id="calendarDate" layoutX="955.0" layoutY="163.0" text="" />
+                               <Label fx:id="calendarDate" layoutX="873.0" layoutY="163.0" text="" />
                                <DatePicker fx:id="datePicker" layoutX="873.0" layoutY="88.0" />
                                <Label layoutX="896.0" layoutY="42.0" text="Wybierz miesiąc raportu" />
                                <Button id="datePickBtn" layoutX="935.0" layoutY="130.0" mnemonicParsing="false" onAction="#showDate" text="Wybierz" />

@@ -21,8 +21,8 @@ public class FuelDispenser {
 
     public void tank(){
         if(container.getFuelLeft()>tanked){
-            tanked += 0.01;
-            cost += price;
+            tanked += 0.01*10;
+            cost += price*10;
         }
     }
 

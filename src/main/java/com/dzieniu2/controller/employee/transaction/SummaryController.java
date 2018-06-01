@@ -113,7 +113,7 @@ public class SummaryController {
             transactionFuel.setFuel(transactionController.getDispenserController().getFuelDispenser().getContainer().getFuel());
             transactionFuel.setFuelPrice(transactionController.getDispenserController().getFuelDispenser().getContainer().getFuel().getPrice());
             transactionFuel.setFuelQuantity(transactionController.getDispenserController().getFuelDispenser().getTanked());
-            transactionFuel.setTotalPrice(transactionController.getDispenserController().getFuelDispenser().getCost());
+            transactionFuel.setTotalPrice(transactionController.getDispenserController().getFuelDispenser().getCost() * fuelDiscount);
             fuelTransactionRepository.add(transactionFuel);
             transactionController.getDispenserController().getFuelDispenser().pay();
         }
