@@ -20,6 +20,13 @@ public class EmployeeRepository {
         return (Employee) query.getSingleResult();
     }
 
+    public Employee findByLoginAndPassword(String login, String password) {
+        Query query = em.createQuery("FROM Employee e WHERE E.login = :login AND password = :password");
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return (Employee) query.getSingleResult();
+    }
+
     public List<Employee> findAll(){
         Query query = em.createQuery("FROM Employee");
         return (List<Employee>) query.getResultList();

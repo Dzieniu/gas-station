@@ -39,7 +39,7 @@ public class Main extends Application
 
     }
 
-    public void loadData() throws IOException {
+    public static void loadData() throws IOException {
 
         ContainerRepository cr = new ContainerRepository();
         Container co1 = new Container();

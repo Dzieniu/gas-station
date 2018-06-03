@@ -18,6 +18,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "login", unique = true)
     private String login;
     private String password;
     private Role role;
